@@ -3,6 +3,7 @@ import { Component, OnDestroy } from '@angular/core';
 import { SubTitleService } from '@core/observable/Observable-title.service';
 import { ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
+import { ConnectionService } from '@core/services/connection.service';
 
 @Component({
   selector: 'app-layout',
@@ -25,6 +26,7 @@ export class LayoutComponent implements OnDestroy {
     private menuDataService : SubTitleService,
     private cdref: ChangeDetectorRef,
     protected router: Router,
+    private conService: ConnectionService
   ) {}
 
   ngOnInit(){
@@ -36,6 +38,14 @@ export class LayoutComponent implements OnDestroy {
         this.cdref.detectChanges();
       }
     )
+    this.conService.getParams().subscribe({
+      next: (response) => {
+        this.conService.params.next(response['data']);
+      }
+    });
+
+    console.log(this.conService.params)
+
   }
 
   ngOnDestroy(): void {

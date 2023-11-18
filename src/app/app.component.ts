@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ConnectionService } from '@core/services/connection.service';
 import { ThemeService } from '@core/services/theme.service';
 
 @Component({
@@ -11,7 +12,9 @@ export class AppComponent implements OnInit{
   theme: string = '';
 
 
-  constructor(private themeService: ThemeService) { }
+  constructor(
+    private themeService: ThemeService,
+    ) { }
 
   // ngOnInit() {
   //   this.themeService.getTheme().subscribe(data => {
@@ -21,5 +24,6 @@ export class AppComponent implements OnInit{
   ngOnInit() {
     this.theme = this.themeService.getTheme();
     console.log(this.theme)
+
   }
 }

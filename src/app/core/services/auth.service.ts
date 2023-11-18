@@ -49,10 +49,19 @@ export class AuthService {
   }
 
   logout(): void {
-    this.conService.logout();
-    this.removeUserFromLocalStorage();
-    this.router.navigateByUrl('/login');
-    this._userSubject.next(null);
+    this.conService.logout().subscribe({
+      next: (response) => {
+        if(response['success'] == true){
+          this.removeUserFromLocalStorage();
+          this.router.navigateByUrl('/login');
+          this._userSubject.next(null);
+        }else{
+          this.removeUserFromLocalStorage();
+          this.router.navigateByUrl('/login');
+          this._userSubject.next(null);
+        }
+      }
+    });
   }
 
   getToken(): string | null {

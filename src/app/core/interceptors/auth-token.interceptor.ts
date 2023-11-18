@@ -20,11 +20,8 @@ export class AuthTokenInterceptor implements HttpInterceptor {
     if (req.url.includes('/api/auth/login') || !token) {
       return next.handle(req);
     }
-    console.log("EStoy añadiendo un token :D")
-
     const headers = req.headers.set('Authorization', `Bearer ${token}`);
     const authReq = req.clone({ headers });
-    console.log(`Bearer ${token}`)
     return next.handle(authReq);
   }
 }

@@ -6,80 +6,71 @@ import { UtilsService } from '@core/services/utils.service';
 @Component({
   selector: 'app-extract-balance',
   templateUrl: './extract-balance.component.html',
-  styleUrls: ['./extract-balance.component.scss']
+  styleUrls: ['./extract-balance.component.scss'],
 })
 export class ExtractBalanceComponent {
-
   extractBalance: any;
   extractBalanceOptions: any;
+  data: any;
+  goTables: boolean = false;
 
-  headersSaved: string[] = [
-    'Concepto de saldo',
-    'N°Subcbte',
-    'Saldo Anterior',
-    'Consignaciones',
-    'Retiros',
-    'Fecha Último Movimiento',
-    'Saldo Actual',
+  headerAhorros = [
+    'Consignac.',
     'Cuota',
-    'Abono de Capital',
-    'Intereses Otros',
-    'Cuotas por Pagar',
-    'N°Subaux',
-    'Rendimientos de Ahorros'
+    'N° Subcomp.',
+    'Saldo Actual',
+    'Intereses/Otros',
+    'Saldo Ant.',
+    'Nom. Subaux.',
+    'Cuotas Pagar',
+    'N° Subaux.',
+    'Retiros',
+    'Abono Capital',
+    'Fecha Últ. Mov.',
+    'Rend. Ahorros',
   ];
 
-  headersContributions: string[] = [
-    'Aportes Ordinarios',
-    'N°Subcbte',
-    'Saldo Anterior',
-    'Consignaciones',
-    'Retiros',
-    'Fecha del Último Movimiento',
-    'Saldo Actual',
-    'Cuota',
-    'Abono a Capital',
-    'Intereses y Otros',
-    'Cuotas por Pagar'
-  ];
 
-  headersCredits: string[] = [
-    'Crédito Preferencial',
-    'Número de Subcomprobante',
-    'Fecha Inicial',
-    'Saldo Anterior',
-    'Abono a Capital',
+
+  headerCreditos: string[] = [
+    'Cuota',
+    'Nombre Subauxiliar',
     'Desembolsos',
-    'Saldo Actual',
-    'Cuota',
     'Cuotas por Pagar',
+    'N° Subcomprobante',
+    'Fecha Inicial',
+    'Saldo Actual',
     'Cuotas en Mora',
     'Intereses y Otros',
-    'Pagos'
+    'Abono de Capital',
+    'Pagos',
+    'Saldo Anterior'
   ];
 
-
-
+  headersAportes: string[] = [
+    'Consignaciones',
+    'Cuota',
+    'Nombre Subauxiliar',
+    'Cuotas por Pagar',
+    'N° Subcomprobante',
+    'Saldo Actual',
+    'Intereses y Otros',
+    'Retiros',
+    'Abono de Capital',
+    'Fecha Último Movimiento',
+    'Saldo Anterior'
+  ];
   constructor(
     private conService: ConnectionService,
     private fb: FormBuilder,
     private utils: UtilsService
-  ){
-  }
+  ) {}
 
-      yourColumnArray: any[] = [
-      { field: 'field1', header: 'Columna 1' },
-      { field: 'field2', header: 'Columna 2' },
-      // Agrega más columnas según tu necesidad
-    ];
-
-  ngOnInit(){
-
-
+  ngOnInit() {
     this.extractBalance = this.fb.group({
       consultType: ['', Validators.required],
       date: ['', Validators.required],
-    })
+    });
 
     this.extractBalanceOptions = [
       { name: 'Todos', code: 'all' },
@@ -87,29 +78,55 @@ export class ExtractBalanceComponent {
       { name: 'Créditos', code: 'creditos' },
       { name: 'Aportes', code: 'aportes' },
     ];
-
-
-
   }
 
-  data: any;
-  onSubmit(){
-    let date = this.utils.formatDateToCustom(this.extractBalance.get('date').value)
-    let extractType = this.extractBalance.get('consultType').value;
-    if(extractType == 'all'){
-      this.conService.getStamentBalance(date).subscribe({
+
+  keys: any;
+  headers: any;
+  extractType: any;
+  originalDta: any;
+
+  onSubmit() {
+    let date = this.utils.formatDateToCustom(this.extractBalance.get('date').value);
+    this.extractType = this.extractBalance.get('consultType').value;
+
+    if (this.extractType == 'all') {
+      this.conService.getBalance(date).subscribe({
         next: (response) => {
           this.data = response['data'];
-        }
-      })
-    }else{
-      this.conService.getStamentBalanceByCategory(extractType, date).subscribe({
+          this.goTables = true;
+        },
+      });
+    } else {
+      this.conService.getBalanceByCategory(this.extractType, date).subscribe({
         next: (response) => {
-          this.data = response['data'];
-        }
-      })
+          if (response['success'] == true) {
+            this.originalDta = response['data']
+            this.data = response['data']['extracts']['categoriesData'][this.extractType];
+            this.keys = Object.keys(this.data[0]);
+            this.headers = this.getHeadersForType(this.extractType);
+            this.goTables = true;
+          }
+        },
+      });
     }
   }
 
+  private getHeadersForType(type: string): string[] {
+    switch (type) {
+      case 'ahorros':
+        return this.headerAhorros;
+      case 'creditos':
+        return this.headerCreditos;
+      case 'aportes':
+        return this.headersAportes;
+      default:
+        return [];
+    }
+  }
+
+  printPage() {
+    window.print();
+  }
 
 }

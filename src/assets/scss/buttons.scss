@@ -74,3 +74,22 @@
 
   }
 }
+
+.out-line{
+  min-width: 245px;
+  padding: 15px;
+  margin: 0;
+  border-radius: 10px;
+  background-color: $greyTableLight;
+  box-shadow: 2px 2px 5px 5px $greyTableLight;
+  font-size: 1.3rem;
+  color: $redAlert;
+  font-weight: 700;
+  border: 3px solid $redAlert;
+    &:hover {
+      background-color: $redAlert;
+      box-shadow: 10px 10px 10px 5px $greyTableLight;
+      color: $greyTableLight;
+
+  }
+}

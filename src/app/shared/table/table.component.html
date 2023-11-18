@@ -1,0 +1,17 @@
+<div class="d-flex flex-column justify-content-center general-table">
+  <h2 class="table-title p-3">{{ title }}</h2>
+  <table class="table-body">
+    <thead>
+      <tr>
+        <th scope="col" *ngFor="let header of headers">{{ header }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of data; let even = even; let odd = odd" [ngClass]="{ 'even-row': even, 'odd-row': odd }">
+        <td *ngFor="let key of keys">
+          {{ isNumber(row[key]) ? (row[key]) : row[key] }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

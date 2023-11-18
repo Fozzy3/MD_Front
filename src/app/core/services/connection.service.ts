@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/enviorment';
 
 const options = {
@@ -15,6 +15,8 @@ const options = {
 export class ConnectionService {
 
   private apiUrl = 'URL_DEL_SERVICIO'; // Reemplaza con la URL de tu servicio
+  public params = new BehaviorSubject<any>(null); // Crea un BehaviorSubject para almacenar parámetros
+
 
   constructor(private http: HttpClient) { }
 
@@ -26,18 +28,37 @@ export class ConnectionService {
     return 'red';
   }
 
+
+  getParams(optionsList?: string[]) {
+
+      return this.http.get(`${environment.API_URL}/api/config/params`);
+
+  }
+
   logout():Observable<any[]> {
     return this.http.get<any[]>(`${environment.API_URL}/api/auth/logout`)
   }
 
+  getBalance(date: string):Observable<any[]> {
+    return this.http.get<any[]>(`${environment.API_URL}/api/statements/balance?date=${date}`)
+  }
 
-  getStamentBalanceByCategory(extractType: string,date: string):Observable<any[]> {
+  getBalanceByCategory(extractType: string,date: string):Observable<any[]> {
     return this.http.get<any[]>(`${environment.API_URL}/api/statements/balance/category?date=${date}&category=${extractType}`)
   }
 
-  getStamentBalance(date: string):Observable<any[]> {
-    return this.http.get<any[]>(`${environment.API_URL}/api/statements/balance?date=${date}`)
+  getAuxiliary(date: string):Observable<any[]> {
+    return this.http.get<any[]>(`${environment.API_URL}/api/statements/auxiliary?date=${date}`)
   }
+
+  getAuxiliaryByCategory(auxType: string,date: string):Observable<any[]> {
+    return this.http.get<any[]>(`${environment.API_URL}/api/statements/auxiliary/category?date=${date}&category=${auxType}`)
+  }
+
+  getCreditLines():Observable<any[]> {
+    return this.http.get<any[]>(`${environment.API_URL}/api/lines`)
+  }
+
 
 
 

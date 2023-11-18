@@ -1,34 +1,65 @@
 <div class="container">
   <div class="my-4 separator"></div>
-  <div class="row text-center">
-    <form [formGroup]="auxiliaries" (ngSubmit)="onSubmit()" class="row g-3">
-      <div class="d-flex justify-content-center">
-        <div class="card col-12 px-5">
-          <div class="d-flex justify-contend-center aling-start col-12 mt-4">
-            <label for="consultType" class="text-start col-6 form-label">Tipo de Consulta:</label>
-            <p-dropdown formControlName="consultType" [options]="consultOptions" optionLabel="name"  placeholder="Seleccione una consulta" ></p-dropdown>
-            <p-message *ngIf="auxiliaries.get('consultType').invalid && auxiliaries.get('consultType').touched"
-              severity="error" text="Field is required"></p-message>
-          </div>
-          <div class="d-flex justify-contend-center aling-start col-12 mt-4">
-            <label for="date" class="text-start col-6 form-label">Fecha</label>
-            <p-calendar formControlName="date" view="month" dateFormat="mm/yy" [readonlyInput]="true"
-              placeholder="Seleccione un mes"></p-calendar>
-            <p-message *ngIf="auxiliaries.get('date').invalid && auxiliaries.get('date').touched" severity="error"
-              text="Field is required"></p-message>
+  <div class="row">
+    <div *ngIf="!goTables" class="row text-center">
+      <form [formGroup]="extractBalance" (ngSubmit)="onSubmit()" class="row g-3">
+        <div class="d-flex justify-content-center">
+          <div class="card col-12 px-5">
+            <div class="d-flex justify-content-center aling-start col-12 mt-4">
+              <label for="consultType" class="text-start col-6 form-label">Tipo de auxiliar:</label>
+              <p-dropdown formControlName="consultType" optionValue="code" [options]="extractBalanceOptions"
+                optionLabel="name" placeholder="Seleccione una consulta"></p-dropdown>
+            </div>
+            <div class="d-flex justify-content-center aling-start col-12 mt-4">
+              <label for="date" class="text-start col-6 form-label">Fecha:</label>
+              <p-calendar formControlName="date" view="month" dateFormat="mm/yy" [readonlyInput]="true"
+                placeholder="Seleccione un mes"></p-calendar>
+            </div>
           </div>
         </div>
+        <div class="my-4 separator"></div>
+        <div class="d-flex justify-content-center align-items-center">
+          <button class="btn  m-2 out mx-5" routerLink="/client" role="button">
+            Volver
+          </button>
+          <button type="submit" class="btn  m-2 save mx-5" role="button" [disabled]="!extractBalance.valid">
+            Continuar
+          </button>
+        </div>
+      </form>
+    </div>
+
+
+    <div  *ngIf="goTables" >
+
+      <div id="TARGET" class=" d-flex justify-content-center  align-items-center flex-column m-1">
+
+        <div class="card my-2 w-100">
+          <h3>{{originalDta['headerData']['empresa']}}</h3>
+          <h3>{{originalDta['headerDate']['fecha']}} - {{originalDta['headerDate']['hora']}}</h3>
+          <h3>NIT: {{originalDta['headerData']['nitBusiness']}}</h3>
+          <h3>Nombre: {{originalDta['headerData']['nombrecliente']}}</h3>
+          <h3>Empresa: {{originalDta['headerData']['nominaempresa']}} Ciudad: {{originalDta['headerData']['ciudad']}}</h3>
+        </div>
+
+        <app-table [title]="extractType" [data]="data" [keys]="keys" [headers]="headers" ></app-table>
       </div>
-      <div class="my-4 separator"></div>
-      <div class="d-flex justify-content-center align-content-center">
-        <button type="submit" class="btn  m-2 save mx-5" routerLink="/admin" role="button" disabled>
-          Guardar
+
+      <div class="d-flex justify-content-center align-items-center my-3">
+
+        <button class="btn  m-2 out-line mx-5" routerLink="/client" role="button">
+          Salir
         </button>
-        <button class="btn  m-2 out mx-5" routerLink="/client" role="button">
+        <button class="btn  m-2 out mx-5" (click)="this.goTables = false" role="button">
           Volver
         </button>
+        <button type="submit" class="btn  m-2 save mx-5" role="button" (click)="printPage()" >
+          Imprimir
+        </button>
       </div>
-      {{ auxiliaries.value | json }}
-    </form>
+
+
+    </div>
+
+
   </div>
-</div>

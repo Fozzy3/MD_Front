@@ -1,46 +1,24 @@
-<div class="container">
-  <div class="my-4 separator"></div>
-  <div class="row">
-<div class="" style="width: 100% !important ;">
-  <p-table [value]="dataSource"  [tableStyle]="{'min-width': '60rem'}">
-    <ng-template pTemplate="caption">
-      <div class="d-flex">
-          <button type="button" pButton pRipple icon="pi pi-file-excel" (click)="exportExcel()" class="p-button-success mr-2"  pTooltip="XLS" tooltipPosition="bottom">XLS</button>
-          <button type="button" pButton pRipple icon="pi pi-file-pdf" (click)="exportPdf()" class="p-button-warning mr-2" pTooltip="PDF" tooltipPosition="bottom">PDF</button>
-        </div>
-  </ng-template>
-    <ng-template pTemplate="header">
-        <tr >
-          <th class="px-1" *ngFor="let col of cols" pSortableColumn="{{col.field}}" >
-            <div class="d-flex">
-              {{col.header}}
-            <p-sortIcon class="d-flex px-1" field="{{col.field}}"></p-sortIcon>
-          </div>
-          </th>
-      </tr>
-      </ng-template>
-      <ng-template pTemplate="body" let-product>
-          <tr>
-              <td>{{product.codigo}}</td>
-              <td>{{product.nombre}}</td>
-              <td>{{product.tipo_de_cuota}}</td>
-              <td>{{product.plazo_maximo}}</td>
-              <td>{{product.tipo_de_obligacion}}</td>
-              <td>{{product.clase_de_tasa}}</td>
-              <td>{{product.valor_minimo}}</td>
-              <td>{{product.valor_maximo}}</td>
-              <td>{{product.garantia}}</td>
-              <td>{{product.libranza}}</td>
-              <td>{{product.tipo_de_cupo_plazo}}</td>
-              <td>{{product.tasa}}</td>
-            </tr>
-      </ng-template>
-  </p-table>
-</div>
-<div class="d-flex justify-content-center align-content-center">
-  <button class="btn  m-2 out mx-5" routerLink="/client"  role="button" >
-    Volver
-  </button>
-</div>
-</div>
-</div>
+<div>
+
+  <div id="TARGET" class=" d-flex justify-content-center  align-items-center flex-column p-2">
+
+    <!-- <div class="card my-2 w-100">
+      <h3>{{originalDta['headerData']['empresa']}}</h3>
+      <h3>{{originalDta['headerDate']['fecha']}} - {{originalDta['headerDate']['hora']}}</h3>
+      <h3>NIT: {{originalDta['headerData']['nitBusiness']}}</h3>
+      <h3>Nombre: {{originalDta['headerData']['nombrecliente']}}</h3>
+      <h3>Empresa: {{originalDta['headerData']['nominaempresa']}} Ciudad: {{originalDta['headerData']['ciudad']}}</h3>
+    </div> -->
+
+    <app-table [title]="title" [data]="data" [keys]="keys" [headers]="headers" ></app-table>
+  </div>
+
+  <div class="d-flex justify-content-center align-items-center my-3">
+
+    <button class="btn  m-2 out-line mx-5" routerLink="/client" role="button">
+      Salir
+    </button>
+    <button type="submit" class="btn  m-2 save mx-5" role="button" (click)="printPage()" >
+      Imprimir
+    </button>
+  </div>

@@ -5,12 +5,12 @@
     <form [formGroup]="databaseInfo" (ngSubmit)="onSubmit()" class="row g-3">
       <div class="d-flex justify-content-center">
       <div class="card col-12 px-5">
-        <div class="d-flex justify-contend-center aling-start col-12 mt-4">
+        <div class="d-flex justify-content-center aling-start col-12 mt-4">
           <label for="branch" class="text-start col-6 form-label">Nombre entidad:</label>
           <input type="text" id="branch" formControlName="branch" class="form-control w-100" placeholder="admin">
           <p-message *ngIf="databaseInfo.get('branch').invalid && databaseInfo.get('branch').touched" severity="error" text="Field is required"></p-message>
         </div>
-        <div class="d-flex justify-contend-center aling-start col-12 mt-4">
+        <div class="d-flex justify-content-center aling-start col-12 mt-4">
           <label for="branch" class="text-start col-6 form-label">Subir Archivo:</label>
           <p-fileUpload name="demo[]" url="https://www.primefaces.org/cdn/api/upload.php" (onUpload)="onUpload($event)" cancelLabel="Cancelar" chooseLabel="Subir" [multiple]="false" accept="" [maxFileSize]="3000" [showUploadButton]="false">
             <ng-template pTemplate="content">
@@ -25,7 +25,7 @@
   </div>
     </div>
     <div class="my-4 separator"></div>
-    <div class="d-flex justify-content-center align-content-center">
+    <div class="d-flex justify-content-center align-items-center">
       <button type="submit" class="btn  m-2 save mx-5" routerLink="/admin" role="button"  disabled>
         Guardar
       </button>

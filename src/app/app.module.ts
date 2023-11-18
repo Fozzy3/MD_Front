@@ -50,9 +50,7 @@ import { FormatsComponent } from './pages/client/formats/formats.component';
 import { MenuClientComponent } from './pages/client/menu-client/menu-client.component';
 import { StateApplicationComponent } from './pages/client//state-application/state-application.component';
 import { authTokeninterceptorProvider } from '@core/interceptors/auth-token.interceptor';
-
-
-
+import { TableComponent } from './shared/table/table.component';
 
 
 @NgModule({
@@ -79,7 +77,8 @@ import { authTokeninterceptorProvider } from '@core/interceptors/auth-token.inte
     ExtractsComponent,
     FormatsComponent,
     MenuClientComponent,
-    StateApplicationComponent
+    StateApplicationComponent,
+    TableComponent
 
   ],
   imports: [

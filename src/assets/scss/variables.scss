@@ -6,8 +6,10 @@ $yellowAlert: #EEB759;
 $redAlert: #D34341;
 
 /*Tables*/
-$greyTableDark: #515151;
-$greyTableLight: #E5E7E9;
+$greyTableDark: #D7D7DD;
+$greyTableLight: #EFEEF3;
+
+
 /*Text*/
 $greyTextDark: #515151;
 $greyTextLight: #E5E7E9;
@@ -53,20 +55,20 @@ html[data-theme="blue"] {
 html[data-theme="green"] {
   --Primary: #{$greenPrimary};
   --Second: #{$greenSecond};
-  --blueMiddle: #{$greenMiddle};
+  --Middle: #{$greenMiddle};
   --Light: #{$greenLight};
 }
 
 html[data-theme="red"] {
   --Primary: #{$redPrimary};
   --Second: #{$redSecond};
-  --blueMiddle: #{$redMiddle};
+  --Middle: #{$redMiddle};
   --Light: #{$redLight};
 }
   html[data-theme="orange"] {
     --Primary: #{$orangePrimary};
     --Second: #{$orangeSecond};
-    --blueMiddle: #{$orangeMiddle};
+    --Middle: #{$orangeMiddle};
     --Light: #{$orangeLight};
 }
 

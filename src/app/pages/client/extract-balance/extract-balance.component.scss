@@ -1,23 +1,22 @@
 @import "../../../../assets/scss/general.scss";
 
-.general-table{
-  h2{
+.general-table {
+  h2 {
     font-size: 1.3rem;
     color: #fff;
     font-weight: 700;
-    text-align: center;  }
+    text-align: center;
+  }
 }
 table {
   width: 100%;
 
   .header {
     background-color: var(--Primary);
-
   }
 
-  thead{
+  thead {
     background-color: var(--Second);
-
   }
 
   tbody {
@@ -29,8 +28,8 @@ table {
       background-color: $greyTableDark;
     }
 
-    tr{
-      td{
+    tr {
+      td {
         td {
           border: 1px solid #000; // Opcional: agrega bordes para visualizar las celdas
 
@@ -40,4 +39,14 @@ table {
       }
     }
   }
+}
+
+h3 {
+  color: #fff !important;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400 !important;
+  line-height: normal;
 }

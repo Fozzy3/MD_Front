@@ -8,3 +8,40 @@ body{
   padding: 0px;
   margin: 0px;
 }
+
+.p-inputtext{
+  min-width: 198px;
+}
+
+
+
+
+
+@media print {
+  body * {
+      visibility: hidden;
+  }
+
+  #TARGET, #TARGET * {
+      visibility: visible;
+  }
+
+  #TARGET {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+  }
+
+  #FOOTER, #FOOTER * {
+    visibility: visible;
+}
+
+  #FOOTER{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+  }
+}
+
