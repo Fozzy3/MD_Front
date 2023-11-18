@@ -1,0 +1,59 @@
+
+@import "../../assets/scss/general.scss";
+
+
+.up-bar{
+  background-color: var(--Second);
+  height: 50px;
+  width: 100%;
+}
+
+.general{
+  position: relative;
+  min-height: calc(100vh - 50px)
+}
+
+.menu{
+  position: fixed;
+  right: 0%;
+  top: calc(50vh - 200px);
+  background-color: transparent;
+  width: 60px;
+  height: auto;
+
+  .menu-item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--Light);
+    padding: 5px;
+    border: 1px solid var(--Second);
+    border-radius: 20px 0px 0px 20px;
+    cursor: pointer;
+    &:hover{
+      background-color: var(--Second);
+    }
+    img{
+      width: 45px;
+      height: 45px;
+    }
+  }
+}
+
+.contend{
+  padding-bottom: 150px;
+}
+
+footer{
+  background-color: var(--Second);
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  img{
+    width: 300px;
+  }
+  .general{
+    color: $whiteBackground;
+  }
+}
+

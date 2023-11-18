@@ -1,0 +1,27 @@
+<div class="container">
+  <img class="d-none d-sm-block wave" src="./../../../../assets/images/blueWaveLogin.svg" alt="">
+  <div class="row">
+    <div class="col-sm-7 col-12 d-flex flex-column justify-content-center align-content-center flex-wrap">
+      <img class=" d-none d-sm-block w-100 mt-5 mb-5" style="width: 200px;"
+        src="./../../../../assets/images/blueLoginCharacter.svg" alt="">
+    </div>
+    <div
+      class="formlogin text-center col-sm-5 col-12 d-flex flex-column justify-content-center align-content-center flex-wrap">
+      <img class="mb-2" src="./../../../../assets/images/blueLoginFace.svg" alt="">
+      <h1>Bienvenido</h1>
+      <h5>Ingrese Identificación y Contraseña</h5>
+      <label for="">390380</label>
+      <label for="">MOR00290</label>
+      <form class="formlogin" [formGroup]="loginData">
+        <div class="loginInput my-4">
+          <input type="text" formControlName="username" placeholder="Usuario" pInputText />
+        </div>
+        <div class="loginInput my-4">
+          <p-password formControlName="password" [feedback]="false" placeholder="Contraseña"
+            [toggleMask]="true"></p-password>
+        </div>
+        <input class="loginCircle" type="button" value="Enviar" (click)="login()">
+      </form>
+    </div>
+  </div>
+</div>

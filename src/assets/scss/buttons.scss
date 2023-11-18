@@ -1,0 +1,76 @@
+@import "./variables.scss";
+.loginCircle {
+  width: 300px;
+  padding: auto;
+  font-size: 1.5rem;
+  border-radius: 50px;
+  font-weight: 600;
+  border: none;
+  height: 50px;
+  margin: 20px;
+  padding: auto;
+  color: $whiteBackground;
+  background-color: var(--Primary);
+  box-shadow: 2px 2px 5px 5px var(--greyTableLight);
+  &:hover {
+    background-color: var(--Second);
+    box-shadow: 10px 10px 10px 5px var(--greyTableLight);
+  }
+}
+.consoleSelector {
+  min-width: 245px;
+  padding: 15px;
+  background-color: var(--Light);
+  min-height: 20px;
+  border-radius: 22px 2px 22px 2px;
+  box-shadow: 2px 2px 5px 5px $greyTableLight;
+  &:hover {
+    background-color: var(--Second);
+    box-shadow: 10px 10px 10px 5px $greyTableLight;
+  }
+  font-size: 1.3rem;
+  font-weight: 500;
+
+  &:disabled{
+    border: none;
+
+  }
+}
+.btn, button{
+:active{
+  border: none !important;
+}
+}
+
+.save{
+  min-width: 245px;
+  padding: 15px;
+  margin: 0;
+  font-size: 1.3rem;
+  border-radius: 10px;
+  color: #fff;
+  font-weight: 700;
+  background-color: var(--Light);
+  box-shadow: 10px 10px 10px 5px $greyTableLight;
+  &:hover {
+    background-color: var(--Second);
+  }
+}
+
+
+.out{
+  min-width: 245px;
+  padding: 15px;
+  margin: 0;
+  border-radius: 10px;
+  background-color: $redAlert;
+  box-shadow: 2px 2px 5px 5px $greyTableLight;
+  font-size: 1.3rem;
+  color: #fff;
+  font-weight: 700;
+    &:hover {
+      background-color: $redAlert;
+      box-shadow: 10px 10px 10px 5px $greyTableLight;
+
+  }
+}

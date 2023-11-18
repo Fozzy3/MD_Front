@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="my-4 separator"></div>
+  <div class="row text-center">
+    <form [formGroup]="auxiliaries" (ngSubmit)="onSubmit()" class="row g-3">
+      <div class="d-flex justify-content-center">
+        <div class="card col-12 px-5">
+          <div class="d-flex justify-contend-center aling-start col-12 mt-4">
+            <label for="consultType" class="text-start col-6 form-label">Tipo de Consulta:</label>
+            <p-dropdown formControlName="consultType" [options]="consultOptions" optionLabel="name"  placeholder="Seleccione una consulta" ></p-dropdown>
+            <p-message *ngIf="auxiliaries.get('consultType').invalid && auxiliaries.get('consultType').touched"
+              severity="error" text="Field is required"></p-message>
+          </div>
+          <div class="d-flex justify-contend-center aling-start col-12 mt-4">
+            <label for="date" class="text-start col-6 form-label">Fecha</label>
+            <p-calendar formControlName="date" view="month" dateFormat="mm/yy" [readonlyInput]="true"
+              placeholder="Seleccione un mes"></p-calendar>
+            <p-message *ngIf="auxiliaries.get('date').invalid && auxiliaries.get('date').touched" severity="error"
+              text="Field is required"></p-message>
+          </div>
+        </div>
+      </div>
+      <div class="my-4 separator"></div>
+      <div class="d-flex justify-content-center align-content-center">
+        <button type="submit" class="btn  m-2 save mx-5" routerLink="/admin" role="button" disabled>
+          Guardar
+        </button>
+        <button class="btn  m-2 out mx-5" routerLink="/client" role="button">
+          Volver
+        </button>
+      </div>
+      {{ auxiliaries.value | json }}
+    </form>
+  </div>
+</div>

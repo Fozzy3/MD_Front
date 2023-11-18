@@ -1,0 +1,21 @@
+@import "../../../../assets/scss/general.scss";
+.separator{
+  width: 100%;
+  height: 20px;
+  background-color: var(--Light);
+  border-radius: 20px;
+}
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+input{
+  width: 100%;
+}
+
+.card{
+  width: 60%;
+}
+

@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="my-4 separator"></div>
+  <div class="row">
+<div class="" style="width: 100% !important ;">
+  <p-table [value]="dataSource"  [tableStyle]="{'min-width': '60rem'}">
+    <ng-template pTemplate="caption">
+      <div class="d-flex">
+          <button type="button" pButton pRipple icon="pi pi-file-excel" (click)="exportExcel()" class="p-button-success mr-2"  pTooltip="XLS" tooltipPosition="bottom">XLS</button>
+          <button type="button" pButton pRipple icon="pi pi-file-pdf" (click)="exportPdf()" class="p-button-warning mr-2" pTooltip="PDF" tooltipPosition="bottom">PDF</button>
+        </div>
+  </ng-template>
+    <ng-template pTemplate="header">
+        <tr >
+          <th class="px-1" *ngFor="let col of cols" pSortableColumn="{{col.field}}" >
+            <div class="d-flex">
+              {{col.header}}
+            <p-sortIcon class="d-flex px-1" field="{{col.field}}"></p-sortIcon>
+          </div>
+          </th>
+      </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-product>
+          <tr>
+              <td>{{product.codigo}}</td>
+              <td>{{product.nombre}}</td>
+              <td>{{product.tipo_de_cuota}}</td>
+              <td>{{product.plazo_maximo}}</td>
+              <td>{{product.tipo_de_obligacion}}</td>
+              <td>{{product.clase_de_tasa}}</td>
+              <td>{{product.valor_minimo}}</td>
+              <td>{{product.valor_maximo}}</td>
+              <td>{{product.garantia}}</td>
+              <td>{{product.libranza}}</td>
+              <td>{{product.tipo_de_cupo_plazo}}</td>
+              <td>{{product.tasa}}</td>
+            </tr>
+      </ng-template>
+  </p-table>
+</div>
+<div class="d-flex justify-content-center align-content-center">
+  <button class="btn  m-2 out mx-5" routerLink="/client"  role="button" >
+    Volver
+  </button>
+</div>
+</div>
+</div>

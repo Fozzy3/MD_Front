@@ -1,0 +1,80 @@
+$whiteBackground: #FAFBFB;
+$blackBackground: #000;
+
+/*Alers*/
+$yellowAlert: #EEB759;
+$redAlert: #D34341;
+
+/*Tables*/
+$greyTableDark: #515151;
+$greyTableLight: #E5E7E9;
+/*Text*/
+$greyTextDark: #515151;
+$greyTextLight: #E5E7E9;
+
+
+
+/**************** Dont Use ****************/
+/*Blue View*/
+$bluePrimary: #5086C1;
+$blueSecond: #84B6F4;
+$blueMiddle: #6A9EDA;
+$blueLight: #B2DAFA;
+/*GreenView*/
+$greenPrimary: #009100;
+$greenSecond: #7DB566;
+$greenMiddle: #609748;
+$greenLight: #ACD09D;
+/*RedView*/
+$redPrimary: #FF0000;
+$redSecond: #FF6666;
+$redMiddle: #FF3333;
+$redLight: #FF9999;
+/*OrangeView*/
+$orangePrimary: #FE6F01;
+$orangeSecond: #fdb873;
+$orangeMiddle: #FD5602;
+$orangeLight: #fdc58c;
+
+/*PinkView*/
+/*OrangeView*/
+/****************************************/
+
+
+/**************** Use ****************/
+
+html[data-theme="blue"] {
+  --Primary: #{$bluePrimary};
+  --Second: #{$blueSecond};
+  --Middle: #{$blueMiddle};
+  --Light: #{$blueLight};
+}
+
+html[data-theme="green"] {
+  --Primary: #{$greenPrimary};
+  --Second: #{$greenSecond};
+  --blueMiddle: #{$greenMiddle};
+  --Light: #{$greenLight};
+}
+
+html[data-theme="red"] {
+  --Primary: #{$redPrimary};
+  --Second: #{$redSecond};
+  --blueMiddle: #{$redMiddle};
+  --Light: #{$redLight};
+}
+  html[data-theme="orange"] {
+    --Primary: #{$orangePrimary};
+    --Second: #{$orangeSecond};
+    --blueMiddle: #{$orangeMiddle};
+    --Light: #{$orangeLight};
+}
+
+html[data-theme="pink"] {
+  --Primary: #ff66b2; /* a bright pink */
+  --Second: #ff99c8; /* a lighter pink */
+  --Middle: #ffccde; /* a very light pink */
+  --Light: #ffe6f0; /* an even lighter pink, almost white */
+}
+
+

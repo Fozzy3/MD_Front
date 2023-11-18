@@ -1,0 +1,22 @@
+<div class="container">
+
+  <div class="row" *ngIf="!showChild">
+    <div class="row">
+      <div class=" col-12 col-sm-6 col-lg-4 my-3" *ngFor="let item of adminButtons" >
+        <button class="btn consoleSelector w-100" routerLink="{{item.url}}"  role="button" (click)="item.url == 'salida-segura' ? auth.logout() : toggleChild()" >
+          {{item.title}}
+          <br>
+          <img class="mt-2" style="width: 40px;" src="{{item.icon}}" alt="">
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="" *ngIf="showChild">
+  <router-outlet></router-outlet>
+
+</div>
+
+
+
+
