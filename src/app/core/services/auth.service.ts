@@ -49,15 +49,14 @@ export class AuthService {
   }
 
   logout(): void {
+    this.router.navigateByUrl('/login');
     this.conService.logout().subscribe({
       next: (response) => {
         if(response['success'] == true){
           this.removeUserFromLocalStorage();
-          this.router.navigateByUrl('/login');
           this._userSubject.next(null);
         }else{
           this.removeUserFromLocalStorage();
-          this.router.navigateByUrl('/login');
           this._userSubject.next(null);
         }
       }

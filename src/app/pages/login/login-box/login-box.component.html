@@ -10,18 +10,24 @@
       <img class="mb-2" src="./../../../../assets/images/blueLoginFace.svg" alt="">
       <h1>Bienvenido</h1>
       <h5>Ingrese Identificación y Contraseña</h5>
-      <label for="">390380</label>
-      <label for="">MOR00290</label>
       <form class="formlogin" [formGroup]="loginData">
         <div class="loginInput my-4">
           <input type="text" formControlName="username" placeholder="Usuario" pInputText />
         </div>
         <div class="loginInput my-4">
           <p-password formControlName="password" [feedback]="false" placeholder="Contraseña"
-            [toggleMask]="true"></p-password>
+            [toggleMask]="true" autocomplete="current-password" ></p-password>
         </div>
         <input class="loginCircle" type="button" value="Enviar" (click)="login()">
       </form>
+      <p-overlayPanel #op>
+        <ng-template pTemplate="content">
+            <p>91236621 : <i>CAN00237</i></p>
+            <p>242320 : <i>242320</i></p>
+        </ng-template>
+    </p-overlayPanel>
+    <p-button  (click)="op.toggle($event)" icon="pi pi-image" label="" severity="info"></p-button>
+
     </div>
   </div>
 </div>

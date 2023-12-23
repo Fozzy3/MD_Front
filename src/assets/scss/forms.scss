@@ -33,9 +33,15 @@ input{
 .card{
   width: 75%;
   height: 100%;
-  background-color: var(--Second);
+  background-color: var(--Light);
   padding: 20px;
   border-radius: 20px;
   border: none;
-
 }
+
+.table-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+

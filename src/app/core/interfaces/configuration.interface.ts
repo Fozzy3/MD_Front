@@ -1,5 +1,5 @@
 
-export interface User{
+export interface UserAdmin{
   branch: string,
   nameCompany: string,
   nitCompany: string,
@@ -8,4 +8,10 @@ export interface User{
   routeFiles: string,
   modules: [],
   color: String,
+ }
+
+export interface Response{
+  success: boolean,
+  data: any,
+  count: number
  }

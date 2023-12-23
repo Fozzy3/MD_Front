@@ -45,9 +45,9 @@
     <div class="my-4 separator"></div>
     <h4>Activación de Modulos</h4>
     <div class="row d-flex modules p-5">
-      <div class="swich col-4 text-start" *ngFor="let item of module">
-        <p-inputSwitch  [trueValue]="item.state"></p-inputSwitch>
-        <label for="">{{item.name}}</label>
+      <div class="swich col-4 text-start" *ngFor="let item of modules">
+         <p-inputSwitch  [(ngModel)]= "modulesAct[item.key]" [ngModelOptions] = "{standalone: true}" ></p-inputSwitch>
+        <label for="" >{{item.name}}</label>
       </div>
     </div>
     <div class="my-4 separator"></div>

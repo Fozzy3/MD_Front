@@ -1,13 +1,21 @@
 <div class="container">
   <div class="my-4 separator"></div>
-  <div class="row text-center">
-    <div class="d-flex justify-content-center align-items-center" >
-      <img class="m-4" style="width: 30%;" src="../../../../assets/icons/inConstruction.svg" alt="">
+  <div class="row text-center justify-content-center">
+
+
+    <div class="card" *ngFor="let item of data" >
+
+      <h5>Correo electrónico: <span> <i>{{item.direccionweb}}</i> </span> </h5>
+      <h5>Cargo: <span> <i>{{item.cargo}}</i> </span> </h5>
+      <h5>Nombre: <span> <i>{{item.nombrecliente}}</i> </span> </h5>
     </div>
+
+
+
     <div class="d-flex justify-content-center align-items-center">
-        <button class="btn  m-2 out mx-5" routerLink="/client"  role="button" >
-          Volver
-        </button>
+      <button class="btn  m-2 out mx-5" routerLink="/client" role="button">
+        Volver
+      </button>
     </div>
   </div>
 </div>

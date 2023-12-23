@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ConnectionService } from '@core/services/connection.service';
 import { ThemeService } from '@core/services/theme.service';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-root',
@@ -14,16 +15,10 @@ export class AppComponent implements OnInit{
 
   constructor(
     private themeService: ThemeService,
+    private messageService: MessageService
     ) { }
 
-  // ngOnInit() {
-  //   this.themeService.getTheme().subscribe(data => {
-
-  //     this.theme = data.theme; // Asigna el valor del tema recibido desde el servicio
-  //   });
   ngOnInit() {
     this.theme = this.themeService.getTheme();
-    console.log(this.theme)
-
   }
 }

@@ -1,60 +1,14 @@
-@import "../../../assets/scss/buttons.scss";
+@import "../../../assets/scss/general.scss";
 
-.general-table {
-  border-radius: 20px;
-  .table-title {
-    background-color: var(--Primary);
-    font-size: 1.3rem;
-    color: #fff !important;
-    font-weight: 700;
-    text-align: center;
-    margin: 0;
-    border-radius: 20px 20px 0px 0px;
-    text-transform: uppercase;
-  }
+
+
+.general-table{
+  display: block;
+  width: 90vw;
 }
 
-.even-row {
-  background-color: $greyTableLight;
+input{
+  border: 1px solid $greyTableDark;
 }
 
-.odd-row {
-  background-color: $greyTableDark;
-}
-
-
-
-.table-body {
-  thead {
-    tr {
-      th {
-        background-color: var(--Second);
-        color: #fff;
-        text-align: center;
-        font-family: Poppins;
-        font-size: 1rem;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-        padding: 5px;
-        text-align: center;
-      }
-    }
-  }
-
-  tbody{
-    tr{
-      td{
-        padding: 5px;
-        text-align: center;
-        height: 58px;
-      }
-    }
-
-    tr:last-child{
-      background-color: var(--Light);
-    }
-
-  }
-}
 

@@ -93,6 +93,7 @@ const routes: Routes = [
   {
     path:'admin', component: ConsoleAdminComponent,
     canActivate: [HasRoleGuard],
+    data: { allowedRoles: ['admin', 'admin'] },
     canLoad: [HasRoleGuard],
     children: [
       {

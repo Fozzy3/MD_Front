@@ -1,17 +1,55 @@
-<div class="d-flex flex-column justify-content-center general-table">
-  <h2 class="table-title p-3">{{ title }}</h2>
-  <table class="table-body">
-    <thead>
-      <tr>
-        <th scope="col" *ngFor="let header of headers">{{ header }}</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let row of data; let even = even; let odd = odd" [ngClass]="{ 'even-row': even, 'odd-row': odd }">
-        <td *ngFor="let key of keys">
-          {{ isNumber(row[key]) ? (row[key]) : row[key] }}
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+
+<h2>{{title | uppercase}}</h2>
+<p-table class="general-table" #dt [scrollable]="true" scrollHeight="100vh" [value]="data"
+[columns]="selectedColumns" responsiveLayout="stack" [breakpoint]="'960px'" [scrollable]="true"
+[reorderableColumns]="true">
+<ng-template pTemplate="caption">
+
+  <div class="table-header">
+    <p-multiSelect [options]="headers" [(ngModel)]="selectedColumns" optionLabel="header"
+      selectedItemsLabel="{0} columns selected" [style]="{'min-width': '200px'}" placeholder="Choose Columns">
+    </p-multiSelect>
+    <div>
+      <button type="button" pButton pRipple icon="pi pi-search" (click)="dt.exportCSV()" class="mr-2" pTooltip="CSV"
+        tooltipPosition="bottom"></button>
+      <button type="button" pButton pRipple icon="pi pi-file-excel" (click)="exportExcel()"
+        class="p-button-success mr-2" pTooltip="XLS" tooltipPosition="bottom"></button>
+      <button type="button" pButton pRipple icon="pi pi-file-pdf" (click)="exportPdf()"
+        class="p-button-warning mr-2" pTooltip="PDF" tooltipPosition="bottom"></button>
+    </div>
+    <div class="d-flex flex-column">
+      Busqueda General
+      <span class="p-input-icon-left">
+        <i class="pi pi-search"></i>
+        <input pInputText type="text" (input)="dt.filterGlobal($event.target['value'], 'contains')"
+          placeholder="Búsqueda" />
+      </span>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template pTemplate="header" let-columns>
+  <tr>
+    <th *ngFor="let col of columns" pReorderableColumn>
+      {{col.header}}
+    </th>
+  </tr>
+</ng-template>
+<ng-template pTemplate="body" let-rowData let-columns="columns" let-index="rowIndex">
+  <tr [pReorderableRow]="index">
+    <td *ngFor="let col of columns">
+      <ng-container *ngIf="col.pipe === 'date'; else otherPipe">
+        {{ rowData[col.field] | date }}
+      </ng-container>
+      <ng-template #otherPipe>
+        <ng-container *ngIf="col.pipe === 'currency'; else noPipe">
+          {{ rowData[col.field] | currency }}
+        </ng-container>
+      </ng-template>
+      <ng-template #noPipe>
+        {{ rowData[col.field] }}
+      </ng-template>
+    </td>
+  </tr>
+</ng-template>
+</p-table>

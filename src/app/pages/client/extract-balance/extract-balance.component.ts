@@ -9,57 +9,62 @@ import { UtilsService } from '@core/services/utils.service';
   styleUrls: ['./extract-balance.component.scss'],
 })
 export class ExtractBalanceComponent {
-  extractBalance: any;
-  extractBalanceOptions: any;
-  data: any;
-  goTables: boolean = false;
 
   headerAhorros = [
-    'Consignac.',
-    'Cuota',
-    'N° Subcomp.',
-    'Saldo Actual',
-    'Intereses/Otros',
-    'Saldo Ant.',
-    'Nom. Subaux.',
-    'Cuotas Pagar',
-    'N° Subaux.',
-    'Retiros',
-    'Abono Capital',
-    'Fecha Últ. Mov.',
-    'Rend. Ahorros',
-  ];
+    { field: 'consignaciones', header: 'Consignac.', pipe: null },
+    { field: 'cuota', header: 'Cuota', pipe: null },
+    { field: 'nsubcbte', header: 'N° Subcomp.', pipe: null },
+    { field: 'saldo_actual', header: 'Saldo Actual', pipe: null },
+    { field: 'intereses_otros', header: 'Intereses/Otros', pipe: null },
+    { field: 'saldo_ant', header: 'Saldo Ant.', pipe: null },
+    { field: 'nombre_subaux', header: 'Nom. Subaux.', pipe: null },
+    { field: 'cuotasxpagar', header: 'Cuotas Pagar', pipe: null },
+    { field: 'nsubaux', header: 'N° Subaux.', pipe: null },
+    { field: 'retiros', header: 'Retiros', pipe: null },
+    { field: 'abono_capital', header: 'Abono Capital', pipe: null },
+    { field: 'fecha_ultmov', header: 'Fecha Últ. Mov.', pipe: null },
+    { field: 'rendimientos_ahorros', header: 'Rend. Ahorros', pipe: null }
+];
 
+headersAportes = [
+    { field: 'consignaciones', header: 'Consignac.', pipe: null },
+    { field: 'cuota', header: 'Cuota', pipe: null },
+    { field: 'nombre_subaux', header: 'Nom. Subaux.', pipe: null },
+    { field: 'cuotasxpagar', header: 'Cuotas Pagar', pipe: null },
+    { field: 'nsubcbte', header: 'N° Subcomp.', pipe: null },
+    { field: 'saldo_actual', header: 'Saldo Actual', pipe: null },
+    { field: 'intereses_otros', header: 'Intereses/Otros', pipe: null },
+    { field: 'retiros', header: 'Retiros', pipe: null },
+    { field: 'abono_capital', header: 'Abono Capital', pipe: null },
+    { field: 'fecha_ultmov', header: 'Fecha Últ. Mov.', pipe: null },
+    { field: 'saldo_ant', header: 'Saldo Ant.', pipe: null }
+];
 
+headerCreditos = [
+  { field: 'cuota', header: 'Cuota', pipe: null },
+  { field: 'nombre_subaux', header: 'Nom. Subaux.', pipe: null },
+  { field: 'desembolsos', header: 'Desembolsos', pipe: null }, // Asumiendo que 'Desembolsos' corresponde a 'Consignac.'
+  { field: 'cuotasxpagar', header: 'Cuotas Pagar', pipe: null },
+  { field: 'nsubcbte', header: 'N° Subcomp.', pipe: null },
+  { field: 'fecha_inicial', header: 'Fecha Inicial', pipe: null }, // Asumiendo que 'Fecha Inicial' corresponde a 'Fecha Últ. Mov.'
+  { field: 'saldo_actual', header: 'Saldo Actual', pipe: null },
+  { field: 'cuotasmora', header: 'Cuotas Mora', pipe: null }, // Asumiendo que 'Cuotas Mora' corresponde a 'Intereses/Otros'
+  { field: 'intereses_otros', header: 'Intereses/Otros', pipe: null },
+  { field: 'abono_capital', header: 'Abono Capital', pipe: null },
+  { field: 'pagos', header: 'Pagos', pipe: null }, // Asumiendo que 'Pagos' corresponde a 'Retiros'
+  { field: 'saldo_ant', header: 'Saldo Ant.', pipe: null }
+];
 
-  headerCreditos: string[] = [
-    'Cuota',
-    'Nombre Subauxiliar',
-    'Desembolsos',
-    'Cuotas por Pagar',
-    'N° Subcomprobante',
-    'Fecha Inicial',
-    'Saldo Actual',
-    'Cuotas en Mora',
-    'Intereses y Otros',
-    'Abono de Capital',
-    'Pagos',
-    'Saldo Anterior'
-  ];
+extractBalance: any;
+extractBalanceOptions: any;
+data: any;
+goTables: boolean = false;
+headers: any;
+extractType: any;
+originalDta: any;
+title: any;
+tabs: any;
 
-  headersAportes: string[] = [
-    'Consignaciones',
-    'Cuota',
-    'Nombre Subauxiliar',
-    'Cuotas por Pagar',
-    'N° Subcomprobante',
-    'Saldo Actual',
-    'Intereses y Otros',
-    'Retiros',
-    'Abono de Capital',
-    'Fecha Último Movimiento',
-    'Saldo Anterior'
-  ];
   constructor(
     private conService: ConnectionService,
     private fb: FormBuilder,
@@ -71,6 +76,7 @@ export class ExtractBalanceComponent {
       consultType: ['', Validators.required],
       date: ['', Validators.required],
     });
+    this.headers = {};
 
     this.extractBalanceOptions = [
       { name: 'Todos', code: 'all' },
@@ -80,39 +86,29 @@ export class ExtractBalanceComponent {
     ];
   }
 
-
-  keys: any;
-  headers: any;
-  extractType: any;
-  originalDta: any;
-
   onSubmit() {
     let date = this.utils.formatDateToCustom(this.extractBalance.get('date').value);
     this.extractType = this.extractBalance.get('consultType').value;
-
+    let query;
     if (this.extractType == 'all') {
-      this.conService.getBalance(date).subscribe({
-        next: (response) => {
-          this.data = response['data'];
-          this.goTables = true;
-        },
-      });
-    } else {
-      this.conService.getBalanceByCategory(this.extractType, date).subscribe({
-        next: (response) => {
-          if (response['success'] == true) {
-            this.originalDta = response['data']
-            this.data = response['data']['extracts']['categoriesData'][this.extractType];
-            this.keys = Object.keys(this.data[0]);
-            this.headers = this.getHeadersForType(this.extractType);
-            this.goTables = true;
-          }
-        },
-      });
+      query = this.conService.getBalance(date)
+    }else{
+      query = this.conService.getBalanceByCategory(this.extractType, date)
     }
+        query.subscribe({
+        next: (response) => {
+          this.originalDta = response['data']
+          this.data = response['data']['extracts'];
+          this.tabs = Object.keys(response['data']['extracts']);
+          this.tabs.forEach(element => {
+            this.headers[element] = this.getHeadersForType(element);
+          });
+          this.goTables = true;        },
+      });
   }
 
-  private getHeadersForType(type: string): string[] {
+
+  private getHeadersForType(type: any){
     switch (type) {
       case 'ahorros':
         return this.headerAhorros;

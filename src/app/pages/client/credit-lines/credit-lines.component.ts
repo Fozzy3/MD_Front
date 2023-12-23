@@ -13,36 +13,18 @@ import { ConnectionService } from '@core/services/connection.service';
 export class LineasCreditoComponent {
 
 
-  headerLines = [
-    'Clase T3',
-    'Clase T4',
-    'Cupo Máx.',
-    'Clase T1',
-    'Clase T2',
-    'Clase T0',
-    'Tipo Cupo',
-    'Tipo Oblig.',
-    'Cupo Mín.',
-    'Plazo Máx.',
-    'Tasa 1',
-    'Tasa 2',
-    'Libranza',
-    'Tasa 0',
-    'Plazo Máx. Tipo',
-    'Tasa Tipo',
-    'Tasa 3',
-    'Subauxiliar',
-    'Tasa 4',
-    'N° Subaux.',
-    'Garantía Adm.',
-    'Tipo Cuota'
-  ];
+  headersLines: any[] = [];
+
+
+
 
   keys: any;
   headers: any;
   title:string = "Lineas de Crédito";
   originalDta: any;
   data:any;
+  selectedColumns:any;
+
     constructor(
     private conService: ConnectionService
     ) {}
@@ -53,35 +35,38 @@ export class LineasCreditoComponent {
         this.originalDta = response['data']
         this.data = response['data'];
         this.keys = Object.keys(this.data[0]);
-        this.headers = this.headerLines;
       },
     });
+
+    this.headersLines = [
+      { field: 'nombre_subaux', header: 'Subauxiliar', pipe: null },
+      { field: 'clasetasa3', header: 'Clase T3', pipe: null },
+      { field: 'nsubaux', header: 'N° Subaux.', pipe: null },
+      { field: 'clasetasa4', header: 'Clase T4', pipe: null },
+      { field: 'cupo_maximo', header: 'Cupo Máx.', pipe: 'currency' },
+      { field: 'clasetasa1', header: 'Clase T1', pipe: null },
+      { field: 'clasetasa2', header: 'Clase T2', pipe: null },
+      { field: 'clasetasa0', header: 'Clase T0', pipe: null },
+      { field: 'tipocupo', header: 'Tipo Cupo', pipe: null },
+      { field: 'tipo_obligacion', header: 'Tipo Oblig.', pipe: null },
+      { field: 'cupo_minimo', header: 'Cupo Mín.', pipe: 'currency' },
+      { field: 'plazomaximo', header: 'Plazo Máx.', pipe: 'date' },
+      { field: 'tipotasa1', header: 'Tasa 1', pipe: 'percent' },
+      { field: 'tipotasa2', header: 'Tasa 2', pipe: 'percent' },
+      { field: 'con_libranza', header: 'Libranza', pipe: null },
+      { field: 'tipotasa0', header: 'Tasa 0', pipe: 'percent' },
+      { field: 'tipo_plazomaximo', header: 'Plazo Máx. Tipo', pipe: null },
+      { field: 'tipo_tasa', header: 'Tasa Tipo', pipe: null },
+      { field: 'tipotasa3', header: 'Tasa 3', pipe: 'percent' },
+      { field: 'tipotasa4', header: 'Tasa 4', pipe: 'percent' },
+      { field: 'garantia_admisible', header: 'Garantía Adm.', pipe: null },
+      { field: 'tipocuota', header: 'Tipo Cuota', pipe: null }
+  ];
+
+
   }
 
-  // exportPdf() {
-  //   this.exportColumns = this.cols.map(col => ({title: col.header, dataKey: col.field}));
-  //   const doc = new jsPDF('portrait', 'px', 'a4');
-  //   autoTable(doc, {columns: this.exportColumns , body: this.dataSource, });
-  //   doc.save('products.pdf');
-  // }
 
-  // exportExcel() {
-  //   import("xlsx").then(xlsx => {
-  //       const worksheet = xlsx.utils.json_to_sheet(this.dataSource);
-  //       const workbook = { Sheets: { 'data': worksheet }, SheetNames: ['data'] };
-  //       const excelBuffer: any = xlsx.write(workbook, { bookType: 'xlsx', type: 'array' });
-  //       this.saveAsExcelFile(excelBuffer, "products");
-  //   });
-  // }
-
-  // saveAsExcelFile(buffer: any, fileName: string): void {
-  //   let EXCEL_TYPE = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
-  //   let EXCEL_EXTENSION = '.xlsx';
-  //   const data: Blob = new Blob([buffer], {
-  //       type: EXCEL_TYPE
-  //   });
-  //   FileSaver.saveAs(data, fileName + '_' + new Date().getTime() + EXCEL_EXTENSION);
-  // }
 
   printPage() {
     window.print();

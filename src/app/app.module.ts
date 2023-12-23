@@ -4,10 +4,11 @@ import { AppComponent } from './app.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http'
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http'
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FileSaverModule } from 'ngx-filesaver';
+import { ErrorInterceptor } from '@core/interceptors/error-interceptor.service';
 
 // PrimeNg
 import { FileUploadModule } from 'primeng/fileupload';
@@ -22,6 +23,10 @@ import { SidebarModule } from 'primeng/sidebar';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { CalendarModule } from 'primeng/calendar';
 import { DropdownModule } from 'primeng/dropdown';
+import { ButtonModule } from 'primeng/button';
+import { ToastModule } from 'primeng/toast';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
+
 
 
 //Shared Link
@@ -51,6 +56,7 @@ import { MenuClientComponent } from './pages/client/menu-client/menu-client.comp
 import { StateApplicationComponent } from './pages/client//state-application/state-application.component';
 import { authTokeninterceptorProvider } from '@core/interceptors/auth-token.interceptor';
 import { TableComponent } from './shared/table/table.component';
+import { MessageService } from 'primeng/api';
 
 
 @NgModule({
@@ -88,6 +94,7 @@ import { TableComponent } from './shared/table/table.component';
     HttpClientModule,
     BrowserAnimationsModule,
     MessageModule,
+    ButtonModule,
     InputTextModule,
     InputSwitchModule,
     FormsModule,
@@ -100,9 +107,11 @@ import { TableComponent } from './shared/table/table.component';
     SidebarModule,
     MultiSelectModule,
     CalendarModule,
-    DropdownModule
+    DropdownModule,
+    ToastModule,
+    OverlayPanelModule
   ],
-  providers: [authTokeninterceptorProvider],
+  providers: [authTokeninterceptorProvider, MessageService, { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor,   multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

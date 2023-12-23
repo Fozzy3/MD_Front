@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/enviorment';
-
+import {Response } from '@core/interfaces/configuration.interface'
 const options = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
@@ -58,6 +58,23 @@ export class ConnectionService {
   getCreditLines():Observable<any[]> {
     return this.http.get<any[]>(`${environment.API_URL}/api/lines`)
   }
+
+  getPersonalData():Observable<any[]> {
+    return this.http.get<any[]>(`${environment.API_URL}/api/data`)
+  }
+
+  getCompanyData():Observable<Response> {
+    return this.http.get<Response>(`${environment.API_URL}/api/data/contact`)
+  }
+
+  getModules():Observable<Response> {
+    return this.http.get<Response>(`${environment.API_URL}/api/config/moduls`)
+  }
+
+
+
+
+
 
 
 

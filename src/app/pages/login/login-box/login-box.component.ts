@@ -3,6 +3,7 @@ import { AuthService } from './../../../core/services/auth.service';
 import { Component } from '@angular/core';
 import { SubTitleService } from '@core/observable/Observable-title.service';
 import { Subscription } from 'rxjs';
+import { MessageService } from 'primeng/api';
 
 
 
@@ -18,7 +19,9 @@ export class LoginBoxComponent {
   constructor(
     protected autSvc :AuthService,
     private fb: FormBuilder,
-    private informationText : SubTitleService){}
+    private informationText : SubTitleService,
+    private messageService: MessageService
+    ){}
 
   ngOnInit(){
     this.loginData = this.fb.group({
@@ -44,7 +47,12 @@ export class LoginBoxComponent {
 
     this.loginSubscription = this.autSvc.login(this.loginData.value).subscribe({
       next: (data: any) => {
-        console.log(data);
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Bienvenido(a)',
+          detail: data.data.name
+        });
+
       },
       error: (error: any) => {
         console.error('Login error:', error);

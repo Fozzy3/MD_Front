@@ -43,9 +43,6 @@ export class LayoutComponent implements OnDestroy {
         this.conService.params.next(response['data']);
       }
     });
-
-    console.log(this.conService.params)
-
   }
 
   ngOnDestroy(): void {

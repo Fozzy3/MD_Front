@@ -30,7 +30,6 @@ export class HasRoleGuard implements CanLoad, CanActivate {
       map((user) => Boolean(user && allowedRoles.includes(user.rol))),
       tap((hasRole) => {
         if (!hasRole) {
-          console.log("SOY UN ROL 2");
           this.authService.logout();
           this.router.navigateByUrl('/login'); // Redirige al usuario a la página de inicio de sesión si no tiene el rol adecuado.
         }
