@@ -77,7 +77,7 @@ export class AuthService {
     return JSON.parse(localStorage.getItem(USER_LOCAL_STORAGE_KEY));
   }
 
-  private removeUserFromLocalStorage(): void {
+  removeUserFromLocalStorage(): void {
     localStorage.removeItem(USER_LOCAL_STORAGE_KEY);
   }
 

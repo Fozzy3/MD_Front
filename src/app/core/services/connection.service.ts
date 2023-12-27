@@ -68,7 +68,7 @@ export class ConnectionService {
   }
 
   getModules():Observable<Response> {
-    return this.http.get<Response>(`${environment.API_URL}/api/config/moduls`)
+    return this.http.get<Response>(`${environment.API_URL}/api/config/modules`)
   }
 
 

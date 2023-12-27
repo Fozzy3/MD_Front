@@ -21,7 +21,9 @@ export class LoginBoxComponent {
     private fb: FormBuilder,
     private informationText : SubTitleService,
     private messageService: MessageService
-    ){}
+    ){
+      this.autSvc.removeUserFromLocalStorage();
+    }
 
   ngOnInit(){
     this.loginData = this.fb.group({

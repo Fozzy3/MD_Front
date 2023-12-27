@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row" *ngIf="!showChild">
     <div class="row">
-      <div class=" col-12 col-sm-6 col-lg-4 my-3" *ngFor="let item of adminButtons" >
+      <div class=" col-12 col-sm-6 col-lg-4 my-3" *ngFor="let item of clientButtons" >
         <button class="btn consoleSelector w-100" (click)="menuChange(item)" routerLink="{{item.url}}"  role="button"  (click)="item.url == 'salida-segura' ? auth.logout() : toggleChild()">
           {{item.title}}
           <br>

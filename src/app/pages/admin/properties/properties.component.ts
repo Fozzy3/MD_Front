@@ -49,6 +49,7 @@ export class PropertiesComponent {
       },
       error: (err) => console.error(err)
     });
+
     this.updateMenu();
   }
 
