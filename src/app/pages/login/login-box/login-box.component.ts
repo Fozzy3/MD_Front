@@ -1,9 +1,10 @@
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from './../../../core/services/auth.service';
-import { Component } from '@angular/core';
+import { Component, ElementRef, Inject, QueryList, Renderer2, ViewChild, ViewChildren } from '@angular/core';
 import { SubTitleService } from '@core/observable/Observable-title.service';
 import { Subscription } from 'rxjs';
 import { MessageService } from 'primeng/api';
+import { UtilsService } from '@core/services/utils.service';
 
 
 
@@ -20,12 +21,20 @@ export class LoginBoxComponent {
     protected autSvc :AuthService,
     private fb: FormBuilder,
     private informationText : SubTitleService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private renderer: Renderer2,
+    private utils: UtilsService,
+
     ){
       this.autSvc.removeUserFromLocalStorage();
     }
+    @ViewChildren('mySvg') mySvgs: QueryList<ElementRef>;
 
   ngOnInit(){
+    this.utils.currentTheme.subscribe(theme => {
+      this.applyThemeToSvgs(theme);
+    });
+
     this.loginData = this.fb.group({
       username: ['', Validators.required],
       password: ['', Validators.required],
@@ -67,5 +76,15 @@ export class LoginBoxComponent {
       this.loginSubscription.unsubscribe();
     }
   }
+
+applyThemeToSvgs(theme: string) {
+  this.mySvgs.forEach(svg => {
+    const paths = svg.nativeElement.querySelectorAll('.my-path');
+    paths.forEach(path => {
+      this.renderer.setStyle(path, 'fill', theme);
+    });
+  });
+}
+
 
 }
