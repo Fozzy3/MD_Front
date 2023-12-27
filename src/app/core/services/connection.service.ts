@@ -20,20 +20,14 @@ export class ConnectionService {
 
   constructor(private http: HttpClient) { }
 
-  // getTheme(): Observable<any> {
-  //   return this.http.get<any>(this.apiUrl);
-  // }
 
   getTheme(){
-    return 'red';
+    return this.http.get(`${environment.API_URL}/api/config/theme`);
   }
 
-
-  getParams(optionsList?: string[]) {
-
-      return this.http.get(`${environment.API_URL}/api/config/params`);
-
-  }
+  getParams() {
+    return this.http.get(`${environment.API_URL}/api/config/params`);
+}
 
   logout():Observable<any[]> {
     return this.http.get<any[]>(`${environment.API_URL}/api/auth/logout`)
@@ -71,7 +65,17 @@ export class ConnectionService {
     return this.http.get<Response>(`${environment.API_URL}/api/config/modules`)
   }
 
+  patchModules(body: any):Observable<Response> {
+    return this.http.patch<Response>(`${environment.API_URL}/api/config/modules`, body)
+  }
 
+  putFields(body: any):Observable<Response> {
+    return this.http.put<Response>(`${environment.API_URL}/api/config/settings`, body)
+  }
+
+  getProperties():Observable<Response> {
+    return this.http.get<Response>(`${environment.API_URL}/api/config/settings`)
+  }
 
 
 

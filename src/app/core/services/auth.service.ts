@@ -70,7 +70,9 @@ export class AuthService {
 
   private saveTokenToLocalStore(userToken: any): void {
     const serializedInfo = JSON.stringify(userToken['data']);
-    localStorage.setItem(USER_LOCAL_STORAGE_KEY, serializedInfo);
+    if(serializedInfo != undefined && serializedInfo != '' && serializedInfo != null){
+      localStorage.setItem(USER_LOCAL_STORAGE_KEY, serializedInfo);
+    }
   }
 
   public getUserFromLocalStorage(): any {

@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { SubTitleService } from '@core/observable/Observable-title.service';
 import { ConnectionService } from '@core/services/connection.service';
+import { MessageService } from 'primeng/api';
 
 
 @Component({
@@ -12,40 +14,38 @@ import { ConnectionService } from '@core/services/connection.service';
 export class PropertiesComponent {
 
   propertiesForm: FormGroup;
-
   modules:any;
-
-
   colorSelect: any = null;
   modulesAct: any
+
   constructor(
     private formBuilder: FormBuilder,
     private informationText : SubTitleService,
-    private conService: ConnectionService
-
+    private conService: ConnectionService,
+    private messageService: MessageService,
+    private router: Router
     ) {
     this.propertiesForm = this.formBuilder.group({
-      branch: ['', Validators.required],
-      nameCompany: ['', Validators.required],
-      nitCompany: ['', Validators.required],
-      nitBranch: ['', Validators.required],
-      folderName: ['', Validators.required],
-      routeFiles: ['', Validators.required],
-      // modules: [[]], // You may need to set the appropriate validators for the 'modules' field.
-      color: ['', Validators.required],
-      selectedColor: ['', Validators.required]
+      branches: ['', Validators.required],
+      nameBusiness: ['', Validators.required],
+      nitBusiness: ['', Validators.required],
+      nameFolder: ['', Validators.required],
+      pathFiles: ['', Validators.required],
+      adressSMPT: ['', Validators.required],
+      theme: ['', Validators.required],
     });
-   }
+  }
 
   ngOnInit() {
 
-    this.conService.getModules().subscribe({
+    this.conService.getProperties().subscribe({
       next: (response) => {
-        this.modules = response.data['modules'];
-        this.modulesAct = this.modules.reduce((acc, module) => {
+        this.modules = response.data['modules']
+        this.modulesAct = response.data['modules'].reduce((acc, module) => {
           acc[module.key] = module.state;
           return acc;
         }, {});
+        this.propertiesForm.setValue(response.data['fields']);
       },
       error: (err) => console.error(err)
     });
@@ -62,6 +62,45 @@ export class PropertiesComponent {
   }
 
   onSubmit() {
+    const transformedArray = Object.entries(this.modulesAct).map(([key, value]) => {
+      return { category: key, state: value };
+    });
+
+    this.conService.putFields(this.propertiesForm.value).subscribe({
+      next: (response) => {
+        if(response.success === true){
+          this.conService.patchModules(transformedArray).subscribe({
+            next: (response) => {
+              if(response.success === true){
+                this.messageService.add({
+                  severity: 'success',
+                  summary: 'Actualizo Correctamente',
+                  detail: 'Módulos guardados correctamente'
+                });
+                this.router.navigateByUrl(`/admin`);
+              }else{
+                this.messageService.add({
+                  severity: 'error',
+                  summary: 'Error',
+                  detail: 'Error al actualizar la configuración'
+                });
+              }
+            },
+            error: (err) => console.error(err)
+          });
+        }else{
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Error',
+            detail: 'Error al actualizar los módulos'
+          });
+        }
+      },
+      error: (err) => console.error(err)
+    });
+
+
+
     if (this.propertiesForm.valid) {
       console.log('Formulario válido. Datos enviados:', this.propertiesForm.value);
     } else {

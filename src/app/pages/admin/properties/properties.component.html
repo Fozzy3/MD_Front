@@ -6,40 +6,35 @@
       <div class="d-flex justify-content-center">
       <div class="card col-12 px-5">
         <div class="d-flex justify-content-center aling-start col-12 mt-4">
-          <label for="branch" class="text-start col-6 form-label">No. Sucursales:</label>
-          <input type="text" id="branch" formControlName="branch" class="form-control w-100" placeholder="1">
-          <p-message *ngIf="propertiesForm.get('branch').invalid && propertiesForm.get('branch').touched" severity="error" text="Field is required"></p-message>
+          <label for="branches" class="text-start col-6 form-label">No. Sucursales:</label>
+          <input type="text" id="branches" formControlName="branches" class="form-control w-100" placeholder="1">
         </div>
 
         <div class="d-flex justify-content-center aling-start col-12 mt-4">
-          <label for="nameCompany" class="text-start col-6 form-label">Nombre entidad:</label>
-          <input type="text" id="nameCompany" formControlName="nameCompany" class="form-control w-100" placeholder="Jorjweb LTDA.">
-          <p-message *ngIf="propertiesForm.get('nameCompany').invalid && propertiesForm.get('nameCompany').touched" severity="error" text="Field is required"></p-message>
+          <label for="nameBusiness" class="text-start col-6 form-label">Nombre entidad:</label>
+          <input type="text" id="nameBusiness" formControlName="nameBusiness" class="form-control w-100" placeholder="Jorjweb LTDA.">
         </div>
 
         <div class="d-flex justify-content-center aling-start col-12 mt-4">
-          <label for="nitCompany" class="text-start col-6 form-label">Nit entidad:</label>
-          <input type="text" id="nitCompany" formControlName="nitCompany" class="form-control w-100" placeholder="860.403.823-5">
-          <p-message *ngIf="propertiesForm.get('nitCompany').invalid && propertiesForm.get('nitCompany').touched" severity="error" text="Field is required"></p-message>
+          <label for="nitBusiness" class="text-start col-6 form-label">Nit entidad:</label>
+          <input type="text" id="nitBusiness" formControlName="nitBusiness" class="form-control w-100" placeholder="860.403.823-5">
         </div>
 
         <div class="d-flex justify-content-center aling-start col-12 mt-4">
-          <label for="nitBranch" class="text-start col-6 form-label">Nombre Sucursal:</label>
-          <input type="text" id="nitBranch" formControlName="nitBranch" class="form-control w-100" placeholder="Bogota D.C">
-          <p-message *ngIf="propertiesForm.get('nitBranch').invalid && propertiesForm.get('nitBranch').touched" severity="error" text="Field is required"></p-message>
+          <label for="nameFolder" class="text-start col-6 form-label">Nombre Carpeta:</label>
+          <input type="text" id="nameFolder" formControlName="nameFolder" class="form-control w-100" placeholder="MODULOWEB">
         </div>
 
         <div class="d-flex justify-content-center aling-start col-12 mt-4">
-          <label for="folderName" class="text-start col-6 form-label">Nombre Carpeta:</label>
-          <input type="text" id="folderName" formControlName="folderName" class="form-control w-100" placeholder="MODULOWEB">
-          <p-message *ngIf="propertiesForm.get('folderName').invalid && propertiesForm.get('folderName').touched" severity="error" text="Field is required"></p-message>
+          <label for="pathFiles" class="text-start col-6 form-label">Ruta Archivos:</label>
+          <input type="text" id="pathFiles" formControlName="pathFiles" class="form-control w-100" placeholder="C:\">
         </div>
 
         <div class="d-flex justify-content-center aling-start col-12 mt-4">
-          <label for="routeFiles" class="text-start col-6 form-label">Ruta Archivos:</label>
-          <input type="text" id="routeFiles" formControlName="routeFiles" class="form-control w-100" placeholder="C:\">
-          <p-message *ngIf="propertiesForm.get('routeFiles').invalid && propertiesForm.get('routeFiles').touched" severity="error" text="Field is required"></p-message>
+          <label for="adressSMPT" class="text-start col-6 form-label">SMPT:</label>
+          <input type="text" id="adressSMPT" formControlName="adressSMPT" class="form-control w-100" placeholder="C:\">
         </div>
+
       </div>
     </div>
     <div class="my-4 separator"></div>
@@ -57,26 +52,24 @@
       <div class="col-6">
         <img class="" src="./../../../../assets/images/enviormentBlue.svg" alt="">
         <div class="flex align-items-center m-2">
-          <p-radioButton formControlName="selectedColor" name="selectedColor" value="blue" inputId="blueColor"></p-radioButton>
+          <p-radioButton formControlName="theme" name="theme" value="blue" inputId="blueColor"></p-radioButton>
       </div>
       </div>
       <div class="col-6">
         <img class="" src="./../../../../assets/images/enviormentGreen.svg" alt="">
         <div class="flex align-items-center m-2">
-          <p-radioButton formControlName="selectedColor" name="selectedColor" value="green" inputId="blueGreen"></p-radioButton>
+          <p-radioButton formControlName="theme" name="theme" value="green" inputId="blueGreen"></p-radioButton>
       </div>
       </div>
     </div>
     <div class="d-flex justify-content-center align-items-center">
-      <button class="btn  m-2 save mx-5" routerLink="/admin/"  role="button" disabled  >
-        Guardar
-      </button>
       <button class="btn  m-2 out mx-5" routerLink="/admin/"  role="button" >
         Volver
       </button>
-
+      <button class="btn  m-2 save mx-5" role="button"  >
+        Guardar
+      </button>
     </div>
-    {{ propertiesForm.value | json }}
     </form>
   </div>
 </div>

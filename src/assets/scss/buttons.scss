@@ -50,10 +50,10 @@
   border-radius: 10px;
   color: #fff;
   font-weight: 700;
-  background-color: var(--Light);
+  background-color: var(--Middle);
   box-shadow: 10px 10px 10px 5px $greyTableLight;
   &:hover {
-    background-color: var(--Second);
+    background-color: var(--Light);
   }
 }
 
