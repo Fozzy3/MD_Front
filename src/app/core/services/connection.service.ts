@@ -11,8 +11,8 @@ const options = {
 
 
 const headersFile = new HttpHeaders({
-  'Content-Type': 'multipart/form-data'
-
+  'Accept': '*/*',
+  'Content-Type': 'multipart/form-data',
 });
 
 @Injectable({
@@ -100,12 +100,9 @@ export class ConnectionService {
   }
 
 
+
   updateDatabase(formData: any): Observable<any> {
-    return this.http.post<Response>(
-      `${environment.API_URL}/api/files/upload`,
-      formData,
-      { headers: headersFile }
-    );
+    return this.http.post(`${environment.API_URL}/api/files/upload`, formData)
   }
 }
 

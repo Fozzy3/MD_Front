@@ -13,7 +13,6 @@
                 </ul>
             </ng-template>
         </p-fileUpload>
-
     </div>
     <br>
     <p>Para guardar los archivos de control, haga clic en "Subir" y seleccione el archivo que desea subir, o arrastre los archivos a la sobre la casilla, luego haga clic en la opción"Guardar destino como..."</p>
@@ -29,6 +28,12 @@
       </button>
     </div>
   </div>
+  <input type="file" (change)="upload($event.target['files'])" />
+  Upload Percent: {{percentDone}}% <br />
+
+  <ng-container *ngIf="uploadSuccess">
+    Upload Successful
+  </ng-container>
 </div>
 
 

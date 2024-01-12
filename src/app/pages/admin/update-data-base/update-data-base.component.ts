@@ -1,3 +1,4 @@
+import { HttpClient, HttpEventType, HttpResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SubTitleService } from '@core/observable/Observable-title.service';
@@ -17,6 +18,7 @@ export class UpdateDataBaseComponent {
     private informationText : SubTitleService,
     private conService: ConnectionService,
     private messageService: MessageService,
+    private http: HttpClient
     ){}
 
   ngOnInit(){
@@ -42,19 +44,48 @@ export class UpdateDataBaseComponent {
     console.log(this.uploadedFiles)
   }
 
+  file: any;
+  onFileChange(event: any): void {
+    this.file = (event.target as HTMLInputElement).files?.[0];
+    // Puedes realizar acciones con el archivo aquí (por ejemplo, mostrar el nombre)
+    console.log('Nombre del archivo:', this.file?.name);
+  }
 
 
   updateDatabase(){
     console.log(this.uploadedFiles[0])
     const formData = new FormData();
-    formData.append('file', this.uploadedFiles[0]);
+    formData.append('file', this.file);
 
+    // this.conService.basicUploadSingle(this.file).subscribe({
+    //   next: (response) => {
+    //     console.log(response)
+    //   },
+    // });
+  }
 
+  // ----------------------
+
+  percentDone: number;
+  uploadSuccess: boolean;
+
+  upload(files: File[]){
+    this.basicUpload(files);
+  }
+
+  basicUpload(files: File[]){
+    var formData = new FormData();
+    Array.from(files).forEach(f => formData.append('file', f))
     this.conService.updateDatabase(formData).subscribe({
       next: (response) => {
         console.log(response)
       },
     });
+
+    // this.http.post('http://localhost:8090/api/files/upload/', formData)
+    //   .subscribe(event => {
+    //     console.log('done')
+    //   })
   }
 
 }
