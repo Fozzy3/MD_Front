@@ -18,6 +18,14 @@ export class PropertiesComponent {
   colorSelect: any = null;
   modulesAct: any
 
+  backgroundColors: any[] = [
+    "blue",
+    "green",
+    "pink",
+    "orange",
+    "red"
+  ]
+
   constructor(
     private formBuilder: FormBuilder,
     private informationText : SubTitleService,
@@ -33,6 +41,8 @@ export class PropertiesComponent {
       pathFiles: ['', Validators.required],
       adressSMPT: ['', Validators.required],
       theme: ['', Validators.required],
+      pageTitle: [''],
+      pageComment: [''],
     });
   }
 

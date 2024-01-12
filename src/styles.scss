@@ -15,12 +15,14 @@ body{
 
 
 
-
-
 @media print {
   body * {
       visibility: hidden;
   }
+
+  #TARGETNOT, #TARGETNOT * {
+    display: none;
+}
 
   #TARGET, #TARGET * {
       visibility: visible;

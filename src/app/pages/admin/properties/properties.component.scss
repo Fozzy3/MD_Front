@@ -19,3 +19,8 @@ input{
   width: 60%;
 }
 
+img {
+  width: 100%; /* o un valor fijo */
+  height: auto; /* mantiene la proporción */
+  object-fit: cover; /* o contain, dependiendo de tus necesidades */
+}

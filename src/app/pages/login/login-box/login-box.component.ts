@@ -77,14 +77,16 @@ export class LoginBoxComponent {
     }
   }
 
-applyThemeToSvgs(theme: string) {
-  this.mySvgs.forEach(svg => {
-    const paths = svg.nativeElement.querySelectorAll('.my-path');
-    paths.forEach(path => {
-      this.renderer.setStyle(path, 'fill', theme);
-    });
-  });
-}
+  applyThemeToSvgs(theme: string) {
+    if (this.mySvgs && this.mySvgs.length) {
+      this.mySvgs.forEach(svg => {
+        const paths = svg.nativeElement.querySelectorAll('.my-path');
+        paths.forEach(path => {
+          this.renderer.setStyle(path, 'fill', theme);
+        });
+      });
+    }
+  }
 
 
 }

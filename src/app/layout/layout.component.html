@@ -1,8 +1,10 @@
 <div class="up-bar w-100"></div>
 <div class="general">
+  <div class="">
+
   <div class="container" *ngIf="showTile">
     <div class="row p-0 m-0 d-flex flex-column align-items-center justify-content-center text-center my-4">
-      <h1 class="my-2">{{'JORJWEB LTDA'}}</h1>
+      <h1 class="my-2">{{utils.getName()}}</h1>
       <h1>{{ information.title}}</h1>
       <h6 class="my-2">{{ information.subTitle}}</h6>
     </div>
@@ -15,41 +17,43 @@
   </div>
 
   <p-sidebar [(visible)]="sidebarVisible">
-    <h3 class="mb-4" >{{information.helpTitle}}</h3>
+    <h3 class="mb-4">{{information.helpTitle}}</h3>
     <p innerHTML="{{information.helpText}}">
     </p>
-</p-sidebar>
+  </p-sidebar>
   <div class="menu">
     <div class="menu-item">
-      <a Target="_blank" >
-        <img src="../../assets/icons/iconAutors.png" [alt]="'Autors'">
+      <a Target="_blank">
+        <img src="./assets/icons/iconAutors.png" [alt]="'Autors'">
       </a>
     </div>
     <div class="menu-item">
-      <a  Target="_blank"(click)="sidebarVisible = true">
-        <img src="../../assets/icons/iconQuestion.png" [alt]="'Dudas'">
+      <a Target="_blank" (click)="sidebarVisible = true">
+        <img src="./assets/icons/iconQuestion.png" [alt]="'Dudas'">
       </a>
     </div>
     <div class="menu-item">
       <a Target="_blank" href="https://www.supersolidaria.gov.co/es/home-1">
-        <img src="../../assets/icons/iconSupersolidaria.png" [alt]="'Supersolidaria' ">
+        <img src="./assets/icons/iconSupersolidaria.png" [alt]="'Supersolidaria' ">
       </a>
     </div>
     <div class="menu-item">
-      <a Target="_blank" href="https://api.whatsapp.com/send?phone=573203202245&text=Hola,%20me%20gustaría%20más%20información!!"
+      <a Target="_blank"
+        href="https://api.whatsapp.com/send?phone=573203202245&text=Hola,%20me%20gustaría%20más%20información!!"
         target="_blank">
-        <img src="../../assets/icons/iconWhatsapp.png" [alt]="'WhatsApp'">
+        <img src="./assets/icons/iconWhatsapp.png" [alt]="'WhatsApp'">
       </a>
     </div>
   </div>
   <p-toast></p-toast>
+</div>
 
-  <footer  id="FOOTER" >
+  <footer id="FOOTER">
     <div class="container">
       <div class="row">
         <div class="col-sm-2 col-12">
-          <a href="https://www.jorjweb.com/" target="_blank" >
-            <img class="p-4" src="../../assets/images/sicoopLogo.png" alt="">
+          <a href="https://www.jorjweb.com/" target="_blank">
+            <img class="p-4" src="./assets/images/sicoopLogo.png" alt="">
           </a>
         </div>
         <div class="col-sm-10 col-12 text-center d-flex flex-column align-items-center justify-content-center ">

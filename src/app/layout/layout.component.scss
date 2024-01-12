@@ -9,7 +9,8 @@
 }
 
 .general{
-  position: relative;
+  display: flex;
+  flex-direction: column; /* Organiza los elementos en una columna */
   min-height: calc(100vh - 50px)
 }
 
@@ -40,13 +41,10 @@
   }
 }
 
-.content{
-  padding-bottom: 150px;
-}
-
 footer{
+  margin-top: auto; /* Empuja el footer hacia abajo */
   background-color: var(--Second);
-  position: absolute;
+  // position: absolute;
   bottom: 0;
   width: 100%;
   img{

@@ -4,6 +4,7 @@ import { SubTitleService } from '@core/observable/Observable-title.service';
 import { ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConnectionService } from '@core/services/connection.service';
+import { UtilsService } from '@core/services/utils.service';
 
 @Component({
   selector: 'app-layout',
@@ -26,7 +27,8 @@ export class LayoutComponent implements OnDestroy {
     private menuDataService : SubTitleService,
     private cdref: ChangeDetectorRef,
     protected router: Router,
-    private conService: ConnectionService
+    private conService: ConnectionService,
+    protected utils: UtilsService
   ) {}
 
   ngOnInit(){

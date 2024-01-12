@@ -28,6 +28,7 @@ export class AppComponent implements OnInit{
     this.conService.getTheme().subscribe({
       next: (response) => {
         this.theme = (response['data']['theme'])
+        this.utils.setName(response['data']['nameBusiness'])
         this.utils.setTheme(this.theme);
         this.renderer.setAttribute(this.document.documentElement, 'data-theme', this.theme);
       }

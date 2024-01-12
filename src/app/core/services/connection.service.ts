@@ -9,6 +9,12 @@ const options = {
   }),
 };
 
+
+const headersFile = new HttpHeaders({
+  'Content-Type': 'multipart/form-data'
+
+});
+
 @Injectable({
   providedIn: 'root'
 })
@@ -49,6 +55,10 @@ export class ConnectionService {
     return this.http.get<any[]>(`${environment.API_URL}/api/statements/auxiliary/category?date=${date}&category=${auxType}`)
   }
 
+  getOtherExtract(type: string):Observable<any[]> {
+    return this.http.get<any[]>(`${environment.API_URL}/api/statements/${type}`)
+  }
+
   getCreditLines():Observable<any[]> {
     return this.http.get<any[]>(`${environment.API_URL}/api/lines`)
   }
@@ -77,12 +87,26 @@ export class ConnectionService {
     return this.http.get<Response>(`${environment.API_URL}/api/config/settings`)
   }
 
+  putPasswordAdmin(body: any):Observable<Response> {
+    return this.http.put<Response>(`${environment.API_URL}/api/credentials/admin`, body)
+  }
+
+  putPasswordClient(body: any):Observable<Response> {
+    return this.http.put<Response>(`${environment.API_URL}/api/credentials/user`, body)
+  }
+
+  putRestorePasswordClient(client: any):Observable<Response> {
+    return this.http.delete<Response>(`${environment.API_URL}/api/credentials/user?username=${client}`)
+  }
 
 
-
-
-
-
+  updateDatabase(formData: any): Observable<any> {
+    return this.http.post<Response>(
+      `${environment.API_URL}/api/files/upload`,
+      formData,
+      { headers: headersFile }
+    );
+  }
 }
 
 

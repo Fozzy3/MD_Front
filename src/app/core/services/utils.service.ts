@@ -12,6 +12,8 @@ export class UtilsService {
   private themeSource = new BehaviorSubject<string>('default-theme');
   currentTheme = this.themeSource.asObservable();
 
+  private nameBusiness;
+
   formatDateToCustom(inputDate: string): string {
     const date = new Date(inputDate);
     const year = date.getFullYear();
@@ -22,6 +24,13 @@ export class UtilsService {
 
   setTheme(theme: string) {
       this.themeSource.next(theme);
+  }
+
+  setName(name: string) {
+    this.nameBusiness = name;
+  }
+  getName() {
+    return this.nameBusiness;
   }
 
 }
