@@ -9,6 +9,7 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FileSaverModule } from 'ngx-filesaver';
 import { ErrorInterceptor } from '@core/interceptors/error-interceptor.service';
+import { DatePipe } from '@angular/common';
 
 // PrimeNg
 import { FileUploadModule } from 'primeng/fileupload';
@@ -26,6 +27,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { ButtonModule } from 'primeng/button';
 import { ToastModule } from 'primeng/toast';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { InputNumberModule } from 'primeng/inputnumber';
 
 
 
@@ -109,9 +111,10 @@ import { MessageService } from 'primeng/api';
     CalendarModule,
     DropdownModule,
     ToastModule,
-    OverlayPanelModule
+    OverlayPanelModule,
+    InputNumberModule
   ],
-  providers: [authTokeninterceptorProvider, MessageService, { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor,   multi: true }],
+  providers: [authTokeninterceptorProvider,DatePipe, MessageService, { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor,   multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

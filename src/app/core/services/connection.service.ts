@@ -99,11 +99,14 @@ export class ConnectionService {
     return this.http.delete<Response>(`${environment.API_URL}/api/credentials/user?username=${client}`)
   }
 
-
-
   updateDatabase(formData: any): Observable<any> {
     return this.http.post(`${environment.API_URL}/api/files/upload`, formData)
   }
+
+  calculateSimulator(formData: any): Observable<any> {
+    return this.http.post(`${environment.API_URL}/api/simulator`, formData)
+  }
+
 }
 
 

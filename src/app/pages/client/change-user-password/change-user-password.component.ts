@@ -25,9 +25,9 @@ export class ChangeUserPasswordComponent {
 
 
   ngOnInit(){
-    this.auth.getUserFromLocalStorage
+    let username = this.auth.getUserFromLocalStorage().username;
     this.changePasswordForm = this.fb.group({
-    username: ['', Validators.required],
+    username: [username, Validators.required],
     password: ['', [Validators.required, Validators.minLength(8)]],
   })
 
@@ -39,7 +39,7 @@ export class ChangeUserPasswordComponent {
   }
 
   onSubmit(){
-    this.conService.putPasswordAdmin(this.changePasswordForm.value).subscribe({
+    this.conService.putPasswordClient(this.changePasswordForm.value).subscribe({
       next: (response) => {
         if(response.success == true){
           this.messageService.add({

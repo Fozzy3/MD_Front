@@ -1,6 +1,7 @@
 import { HttpClient, HttpEventType, HttpResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { SubTitleService } from '@core/observable/Observable-title.service';
 import { ConnectionService } from '@core/services/connection.service';
 import { MessageService } from 'primeng/api';
@@ -18,7 +19,8 @@ export class UpdateDataBaseComponent {
     private informationText : SubTitleService,
     private conService: ConnectionService,
     private messageService: MessageService,
-    private http: HttpClient
+    private http: HttpClient,
+    private router: Router
     ){}
 
   ngOnInit(){
@@ -35,57 +37,35 @@ export class UpdateDataBaseComponent {
     }
     this.messageService.add({
       severity: 'info',
-      summary: 'Archivo cargado',
+      summary: 'Archivo listo para subir',
       detail: ''
     });
   }
 
-  imprimir(){
-    console.log(this.uploadedFiles)
-  }
-
-  file: any;
-  onFileChange(event: any): void {
-    this.file = (event.target as HTMLInputElement).files?.[0];
-    // Puedes realizar acciones con el archivo aquí (por ejemplo, mostrar el nombre)
-    console.log('Nombre del archivo:', this.file?.name);
-  }
-
-
   updateDatabase(){
-    console.log(this.uploadedFiles[0])
-    const formData = new FormData();
-    formData.append('file', this.file);
-
-    // this.conService.basicUploadSingle(this.file).subscribe({
-    //   next: (response) => {
-    //     console.log(response)
-    //   },
-    // });
-  }
-
-  // ----------------------
-
-  percentDone: number;
-  uploadSuccess: boolean;
-
-  upload(files: File[]){
-    this.basicUpload(files);
-  }
-
-  basicUpload(files: File[]){
     var formData = new FormData();
-    Array.from(files).forEach(f => formData.append('file', f))
+    Array.from(this.uploadedFiles).forEach(f => formData.append('file', f))
     this.conService.updateDatabase(formData).subscribe({
       next: (response) => {
-        console.log(response)
+        if(response.success == true){
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Archivo enviado exitosamente',
+            detail: 'Cargado a la base de datos'
+          });
+          this.router.navigateByUrl(`/admin`);
+        }else{
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Error al subir archivo',
+            detail: ''
+          });
+          this.router.navigateByUrl(`/admin`);
+        }
       },
     });
-
-    // this.http.post('http://localhost:8090/api/files/upload/', formData)
-    //   .subscribe(event => {
-    //     console.log('done')
-    //   })
   }
+
+
 
 }

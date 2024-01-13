@@ -1,8 +1,4 @@
 import { Component } from '@angular/core';
-import { dataTable } from '@core/data/exampleTable';
-import jsPDF from 'jspdf';
-import autoTable from 'jspdf-autotable';
-import * as FileSaver from 'file-saver';
 import { ConnectionService } from '@core/services/connection.service';
 
 @Component({
@@ -11,28 +7,21 @@ import { ConnectionService } from '@core/services/connection.service';
   styleUrls: ['./credit-lines.component.scss'],
 })
 export class LineasCreditoComponent {
-
-
   headersLines: any[] = [];
-
-
-
 
   keys: any;
   headers: any;
-  title:string = "Lineas de Crédito";
+  title: string = 'Lineas de Crédito';
   originalDta: any;
-  data:any;
-  selectedColumns:any;
+  data: any;
+  selectedColumns: any;
 
-    constructor(
-    private conService: ConnectionService
-    ) {}
+  constructor(private conService: ConnectionService) {}
 
   ngOnInit() {
     this.conService.getCreditLines().subscribe({
       next: (response) => {
-        this.originalDta = response['data']
+        this.originalDta = response['data'];
         this.data = response['data'];
         this.keys = Object.keys(this.data[0]);
       },
@@ -60,16 +49,11 @@ export class LineasCreditoComponent {
       { field: 'tipotasa3', header: 'Tasa 3', pipe: 'percent' },
       { field: 'tipotasa4', header: 'Tasa 4', pipe: 'percent' },
       { field: 'garantia_admisible', header: 'Garantía Adm.', pipe: null },
-      { field: 'tipocuota', header: 'Tipo Cuota', pipe: null }
-  ];
-
-
+      { field: 'tipocuota', header: 'Tipo Cuota', pipe: null },
+    ];
   }
-
-
 
   printPage() {
     window.print();
   }
-
 }

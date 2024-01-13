@@ -1,3 +1,4 @@
+@import "primeicons/primeicons.css";
 @import "./assets/scss/buttons.scss";
 @import "./assets/scss/forms.scss";
 @import "./assets/scss/text.scss";
@@ -13,7 +14,26 @@ body{
   min-width: 198px;
 }
 
+.p-inputtext::placeholder{
+  color: $greyTableLight;
+}
 
+input.numberprime{
+  width: 304px
+
+
+}
+input.numberprime::placeholder{
+  color: $greyTableLight;
+}
+
+
+ @media screen and (max-width: 530px) {
+  input.numberprime{
+    width: 204px
+   }
+
+}
 
 @media print {
   body * {
