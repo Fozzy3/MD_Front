@@ -20,6 +20,16 @@ export const itemsAdmin = [
     url: 'subir-base-datos'
   },
   {
+    title: 'Actualizar licencia',
+    icon: './assets/icons/admin/licencia.svg',
+    url: 'actualizar-licencia'
+  },
+  {
+    title: 'Subir Formatos',
+    icon: './assets/icons/admin/formats.svg',
+    url: 'subir-formatos'
+  },
+  {
     title: 'Salida Segura',
     icon: './assets/icons/admin/salida.svg',
     url: 'salida-segura'

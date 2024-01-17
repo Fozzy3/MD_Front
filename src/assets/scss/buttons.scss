@@ -57,6 +57,25 @@
   }
 }
 
+.trash{
+  min-width: 50px;
+  width: 50px;
+  height: 50px;
+  min-height: 50px;
+  padding: 15px;
+  margin: 0;
+  border-radius: 10px;
+  background-color: $redAlert;
+  border: 1px solid $redAlert;
+  box-shadow: 2px 2px 5px 5px $greyTableLight;
+  color: #fff;
+    &:hover {
+      background-color: $redAlert;
+      box-shadow: 10px 10px 10px 5px $greyTextLight;
+
+  }
+}
+
 
 .out{
   min-width: 245px;

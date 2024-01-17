@@ -23,6 +23,8 @@ import { FormatsComponent } from './pages/client/formats/formats.component';
 import { MenuClientComponent } from './pages/client/menu-client/menu-client.component';
 import { StateApplicationComponent } from './pages/client//state-application/state-application.component';
 import { HasRoleGuard } from '@core/guards/has-role.guard';
+import { UpdateLicenseComponent } from './pages/admin/update-license/update-license.component';
+import { LoadFormatComponent } from './pages/admin/load-formats/load-formats.component';
 
 const routes: Routes = [
   {
@@ -115,6 +117,14 @@ const routes: Routes = [
       {
         path: 'subir-base-datos',
         component: UpdateDataBaseComponent
+      },
+      {
+        path: 'actualizar-licencia',
+        component: UpdateLicenseComponent
+      },
+      {
+        path: 'subir-formatos',
+        component: LoadFormatComponent
       },
       {
         path: 'salida-segura',

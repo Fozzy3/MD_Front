@@ -29,7 +29,8 @@ export class AppComponent implements OnInit{
       next: (response) => {
         this.theme = (response['data']['theme'])
         this.utils.setName(response['data']['nameBusiness'])
-        this.utils.setTheme(this.theme);
+        this.utils.setWhatsapp(response['data']['whatsapp'])
+        this.utils.setTheme(response['data']['theme']);
         this.renderer.setAttribute(this.document.documentElement, 'data-theme', this.theme);
       }
     });

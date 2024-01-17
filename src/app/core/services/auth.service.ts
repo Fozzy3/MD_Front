@@ -12,6 +12,7 @@ import {
 } from 'rxjs';
 import { Router } from '@angular/router';
 import { ConnectionService } from './connection.service';
+import { MessageService } from 'primeng/api';
 
 const USER_LOCAL_STORAGE_KEY = 'USER_LOCAL_STORAGE_KEY';
 
@@ -26,7 +27,8 @@ export class AuthService {
   constructor(
     private http: HttpClient,
     private router: Router,
-    private conService: ConnectionService
+    private conService: ConnectionService,
+    private messageService: MessageService
   ) {
     const token = this.getToken();
     const userData = this.getUserFromLocalStorage();
@@ -55,8 +57,16 @@ export class AuthService {
   }
 
   private redirectToMenu(userToken): void {
-    this.router.navigateByUrl(`/${userToken['data'].rol}`);
+    if (userToken && userToken['data'] && userToken['data'].rol) {
+      this.router.navigateByUrl(`/${userToken['data'].rol}`);
+    } else {
+      this.messageService.add({
+        severity: 'error',
+        summary: 'Licencia no valida',
+        detail: 'Comunicarse con administrador'
+      });    }
   }
+
 
   logout(): void {
     if (localStorage.getItem(USER_LOCAL_STORAGE_KEY)) {

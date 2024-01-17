@@ -58,12 +58,15 @@ export class LoginBoxComponent {
 
     this.loginSubscription = this.autSvc.login(this.loginData.value).subscribe({
       next: (data: any) => {
-        this.messageService.add({
-          severity: 'success',
-          summary: 'Bienvenido(a)',
-          detail: data.data.name
-        });
+        const userName = data?.data?.name;
 
+        if (userName) {
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Bienvenido(a)',
+            detail: userName
+          });
+        }
       },
       error: (error: any) => {
         console.error('Login error:', error);

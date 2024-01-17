@@ -12,7 +12,7 @@
     </div>
 
     <div class="d-flex justify-content-center aling-start col-12 mt-4">
-      <label for="numberOfInstallments" class="text-center col-6 form-label align-self-center">Tipo Tasa::</label>
+      <label for="numberOfInstallments" class="text-center col-6 form-label align-self-center">Tipo Tasa:</label>
       <div class="w-100">
         <p-dropdown class="w-100" [(ngModel)]="rate" [options]="rateOptions" optionLabel="name" [showClear]="true"
           placeholder="..."></p-dropdown>
@@ -52,14 +52,14 @@
         <div class="w-100">
           <p-dropdown class="w-100" formControlName="installmentType" [options]="conService.params.value.typeQuotas"
             [filter]="true" filterBy="label" optionLabel="label" optionValue="textCode" [showClear]="true"
-            placeholder="..." autocomplete="off"></p-dropdown>
+            placeholder="Seleccionar" autocomplete="off"></p-dropdown>
         </div>
       </div>
 
       <div class="d-flex justify-content-center aling-start col-6 mt-4">
         <label for="disbursementDate" class="text-start col-6 form-label align-self-center">Fecha de desembolso:</label>
         <div class="w-100">
-          <p-calendar dateFormat="yy-mm-dd" id="disbursementDate" formControlName="disbursementDate" class=" w-100"
+          <p-calendar dateFormat="yy-mm-dd"  [minDate]="todayDate" id="disbursementDate" formControlName="disbursementDate" class=" w-100"
             placeholder="2024-01-15" autocomplete="off"></p-calendar>
         </div>
       </div>
@@ -82,7 +82,7 @@
         </div>
       </div>
 
-      <div class="d-flex justify-content-center aling-start col-6 mt-4">
+      <!-- <div class="d-flex justify-content-center aling-start col-6 mt-4">
         <label for="otherRate" class="text-start col-6 form-label align-self-center">Otra tasa:</label>
         <div class="w-100">
           <p-inputNumber [inputStyleClass]="'numberprime'" formControlName="otherRate" inputId="minmaxfraction"
@@ -90,7 +90,7 @@
             autocomplete="off"></p-inputNumber>
           <small id="otherRate">Ingrese un tasa válida*.</small>
         </div>
-      </div>
+      </div> -->
     </form>
   </div>
 </div>

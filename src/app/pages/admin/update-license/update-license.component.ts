@@ -7,11 +7,11 @@ import { ConnectionService } from '@core/services/connection.service';
 import { MessageService } from 'primeng/api';
 
 @Component({
-  selector: 'app-update-data-base',
-  templateUrl: './update-data-base.component.html',
-  styleUrls: ['./update-data-base.component.scss']
+  selector: 'app-update-license',
+  templateUrl: './update-license.component.html',
+  styleUrls: ['./update-license.component.scss']
 })
-export class UpdateDataBaseComponent {
+export class UpdateLicenseComponent {
 
   uploadedFiles: any[] = [];
 
@@ -23,18 +23,9 @@ export class UpdateDataBaseComponent {
     private router: Router
     ){}
 
-    databaseList: any[];
   ngOnInit(){
-
-    this.conService.getDatabaseList().subscribe({
-      next: (response) => {
-          if(response.success == true){
-            this.databaseList = response.data;
-          }
-      },
-    })
     this.informationText.updateMenu({
-      title: 'Restablecer Contraseña a Usuario',
+      title: 'Restablecer Licencia del aplicativo',
       subTitle: "Administrador",
       helpTitle: "Guía Rápida: Subida de Archivos",
       helpText: "<p>Estás en la sección para subir archivos de control al sistema. Si necesitas guardar o actualizar algún documento, sigue las instrucciones a continuación:</p> <p><strong>Seleccione la Sucursal y el Archivo:</strong></p> <p>Antes de subir el archivo, verifica que has seleccionado la sucursal correcta. Luego, en la opción de 'Nombre entidad', confirma que estás gestionando los archivos bajo el perfil 'admin' o el nombre de entidad que corresponda.</p> <p><strong>Subir Archivo:</strong></p> <p>Para cargar los archivos al sistema:</p> <ol> <li>Haz clic en el botón <strong>'Subir'</strong>.</li> <li>Se abrirá una ventana de diálogo; selecciona el archivo que deseas subir desde tu dispositivo. Alternativamente, puedes arrastrar y soltar el archivo directamente sobre la casilla designada para ello.</li> <li>Una vez seleccionado el archivo, haz clic en la opción <strong>'Guardar destino como...'</strong> para finalizar la subida y almacenar el archivo en la ubicación deseada del sistema.</li> </ol> <p>Recuerda que es esencial subir solo archivos confiables y verificar la integridad de los mismos para asegurar un buen funcionamiento del sistema. En caso de dudas o problemas durante el proceso, consulta la documentación detallada o contacta al soporte técnico.</p>"})
@@ -54,12 +45,12 @@ export class UpdateDataBaseComponent {
   updateDatabase(){
     var formData = new FormData();
     Array.from(this.uploadedFiles).forEach(f => formData.append('file', f))
-    this.conService.updateDatabase(formData).subscribe({
+    this.conService.updateLicense(formData).subscribe({
       next: (response) => {
         if(response.success == true){
           this.messageService.add({
             severity: 'success',
-            summary: 'Archivo enviado exitosamente',
+            summary: 'Licencia enviado exitosamente',
             detail: 'Cargado a la base de datos'
           });
           this.router.navigateByUrl(`/admin`);

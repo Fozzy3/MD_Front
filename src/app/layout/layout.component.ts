@@ -17,12 +17,12 @@ export class LayoutComponent implements OnDestroy {
   showTile = true;
   information = {
     title: 'Modulo Web',
-    subTitle: "Menu Usuario",
+    subTitle: "Menú Usuario",
     helpTitle: "Administrador",
     helpText: "Hola, administrador, durante la vista actual usted podrá hacer las configuraciones básicas del modulo web, cambiar la bse de datos, y recuperar contraseña de sus usuarios."
   };
   contentSub: Subscription;
-
+  whatsappValue: any;
   constructor(
     private menuDataService : SubTitleService,
     private cdref: ChangeDetectorRef,
@@ -32,6 +32,10 @@ export class LayoutComponent implements OnDestroy {
   ) {}
 
   ngOnInit(){
+    this.utils.getWhatsapp().subscribe((value) => {
+      this.whatsappValue = value;
+    });
+
     this.contentSub = this.menuDataService.dataContent.subscribe(
       (content) => {
         if(content){

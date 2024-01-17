@@ -103,10 +103,35 @@ export class ConnectionService {
     return this.http.post(`${environment.API_URL}/api/files/upload`, formData)
   }
 
+  updateLicense(formData: any): Observable<any> {
+    return this.http.post(`${environment.API_URL}/api/files/upload`, formData)
+  }
+
+  loadFormat(formData: any): Observable<any> {
+    return this.http.post(`${environment.API_URL}/api/formats/upload`, formData)
+  }
+
+  getFormatsList(): Observable<any> {
+    return this.http.get(`${environment.API_URL}/api/formats/files`)
+  }
+
+  getDatabaseList(): Observable<any> {
+    return this.http.get(`${environment.API_URL}/api/files/`)
+  }
+
   calculateSimulator(formData: any): Observable<any> {
     return this.http.post(`${environment.API_URL}/api/simulator`, formData)
   }
 
+  deleteFormat(name: any): Observable<any> {
+    return this.http.delete(`${environment.API_URL}/api/formats/?id=${name}`)
+  }
+
+  downloadFormat(name: any): Observable<any> {
+    return this.http.get(`${environment.API_URL}/api/formats/download?id=${name}`, { responseType: 'blob' });
+  }
 }
+
+
 
 

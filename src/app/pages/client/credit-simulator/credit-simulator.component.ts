@@ -14,11 +14,12 @@ export class CreditSimulatorComponent {
   loanForm: FormGroup;
   step = 0;
   repaymentOptions: any[] = [
-    { name: 'Cuota Constente', code: 'cuota_constante' },
+    { name: 'Cuota Constante', code: 'cuota_constante' },
   ];
   rateOptions: any[] = [{ name: 'Tasa Vencida (V)', code: 'tasa_vencida' }];
   repayment: any;
   rate: any;
+  todayDate = new Date();
   constructor(
     private fb: FormBuilder,
     protected conService: ConnectionService,
@@ -34,12 +35,12 @@ export class CreditSimulatorComponent {
 
   initializeForm(): void {
     this.loanForm = this.fb.group({
-      loanAmount: [1000000, [Validators.required, Validators.min(1)]],
-      numberOfInstallments: [3, [Validators.required, Validators.min(1)]],
-      installmentType: ['diaria', Validators.required],
-      disbursementDate: ['2024-01-11', Validators.required],
-      paymentDate: ['2024-01-15', Validators.required],
-      interestRate: [0.025, [Validators.required, Validators.min(0)]],
+      loanAmount: [null, [Validators.required, Validators.min(1)]],
+      numberOfInstallments: [null, [Validators.required, Validators.min(1)]],
+      installmentType: [null, Validators.required],
+      disbursementDate: [null, Validators.required],
+      paymentDate: [null, Validators.required],
+      interestRate: [null, [Validators.required, Validators.min(0)]],
       otherRate: [0.0, [Validators.required, Validators.min(0)]],
     });
   }

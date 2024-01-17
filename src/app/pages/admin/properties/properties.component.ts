@@ -38,8 +38,11 @@ export class PropertiesComponent {
       nameBusiness: ['', Validators.required],
       nitBusiness: ['', Validators.required],
       theme: ['', Validators.required],
+      whatsapp: ['', Validators.required],
       pageTitle: [''],
       pageComment: [''],
+
+
     });
   }
 

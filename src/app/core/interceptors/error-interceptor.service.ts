@@ -23,19 +23,17 @@ export class ErrorInterceptor implements HttpInterceptor {
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    // Intercepta la solicitud y devuelve un Observable de HttpEvent<any>
-      return next.handle(request).pipe(
-        map((event: HttpEvent<any>) => {
-          if (event instanceof HttpResponse) {
-            if (event.body && !('success' in event.body && event.body.success === true)) {
-              // Muestra el mensaje basado en el cuerpo de la respuesta si no es exitosa
-              this.showMessageBasedOnResponse(event.body);
-            }
+    return next.handle(request).pipe(
+      map((event: HttpEvent<any>) => {
+        if (event instanceof HttpResponse) {
+          const contentType = event.headers.get('content-type');
+          if (contentType && contentType.toLowerCase().includes('application/pdf')) {
           }
-          return event;
-        }),
+        }
+        return event;
+      }),
       catchError((err) => {
-        this.handleHttpError(err);
+        // You can add error handling logic here if needed
         return throwError(() => err);
       })
     );

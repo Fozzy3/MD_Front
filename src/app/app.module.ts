@@ -28,6 +28,9 @@ import { ButtonModule } from 'primeng/button';
 import { ToastModule } from 'primeng/toast';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { InputNumberModule } from 'primeng/inputnumber';
+import { ListboxModule } from 'primeng/listbox';
+import { AccordionModule } from 'primeng/accordion';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 
 
@@ -59,6 +62,8 @@ import { StateApplicationComponent } from './pages/client//state-application/sta
 import { authTokeninterceptorProvider } from '@core/interceptors/auth-token.interceptor';
 import { TableComponent } from './shared/table/table.component';
 import { MessageService } from 'primeng/api';
+import { UpdateLicenseComponent } from './pages/admin/update-license/update-license.component';
+import { LoadFormatComponent } from './pages/admin/load-formats/load-formats.component';
 
 
 @NgModule({
@@ -86,7 +91,9 @@ import { MessageService } from 'primeng/api';
     FormatsComponent,
     MenuClientComponent,
     StateApplicationComponent,
-    TableComponent
+    TableComponent,
+    UpdateLicenseComponent,
+    LoadFormatComponent
 
   ],
   imports: [
@@ -112,7 +119,10 @@ import { MessageService } from 'primeng/api';
     DropdownModule,
     ToastModule,
     OverlayPanelModule,
-    InputNumberModule
+    InputNumberModule,
+    ListboxModule,
+    AccordionModule,
+    ConfirmDialogModule
   ],
   providers: [authTokeninterceptorProvider,DatePipe, MessageService, { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor,   multi: true }],
   bootstrap: [AppComponent]
