@@ -5,20 +5,20 @@
       <form [formGroup]="extractBalance" (ngSubmit)="onSubmit()" class="row g-3">
         <div class="d-flex justify-content-center">
           <div class="card col-12 px-5">
-            <div class="d-flex justify-content-center aling-start col-12 mt-4">
-              <label for="consultType" class="text-start col-6 form-label">Tipo de extracto:</label>
-              <p-dropdown formControlName="consultType" optionValue="code" [options]="extractBalanceOptions"
+            <div class="row d-flex justify-content-center aling-start col-12 mt-4">
+              <label for="consultType" class="text-start col-12 col-md-6 form-label">Tipo de extracto:</label>
+              <p-dropdown class="col-12 col-md-6" formControlName="consultType" optionValue="code" [options]="extractBalanceOptions"
                 optionLabel="name" placeholder="Seleccione una consulta"></p-dropdown>
             </div>
-            <div class="d-flex justify-content-center aling-start col-12 mt-4">
-              <label for="date" class="text-start col-6 form-label">Fecha:</label>
-              <p-calendar formControlName="date" view="month" dateFormat="mm/yy" [readonlyInput]="true"
+            <div class="row d-flex justify-content-center aling-start col-12 mt-4">
+              <label for="date" class="text-start col-12 col-md-6 form-label">Fecha:</label>
+              <p-calendar class="col-12 col-md-6" formControlName="date" view="month" dateFormat="mm/yy" [readonlyInput]="true"
                 placeholder="Seleccione un mes"></p-calendar>
             </div>
           </div>
         </div>
         <div class="my-4 separator"></div>
-        <div class="d-flex justify-content-center align-items-center flex-sm-row flex-column">
+        <div class="d-flex justify-content-center align-items-center flex-md-row flex-column">
           <button class="btn  m-2 out mx-5" routerLink="/client" role="button">
             Volver
           </button>
@@ -47,7 +47,7 @@
           <app-table [title]="tab" [data]="data[tab]" [headers]="headers[tab]"></app-table>
         </div>
 
-      <div class="d-flex justify-content-center align-items-center flex-sm-row flex-column my-3">
+      <div class="d-flex justify-content-center align-items-center flex-md-row flex-column my-3">
 
         <button class="btn  m-2 out-line mx-5" routerLink="/client" role="button">
           Salir
