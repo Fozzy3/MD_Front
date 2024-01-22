@@ -23,7 +23,7 @@ export class PropertiesComponent {
     "green",
     "pink",
     "orange",
-    "red"
+    "red",
   ]
 
   constructor(
@@ -108,14 +108,6 @@ export class PropertiesComponent {
       },
       error: (err) => console.error(err)
     });
-
-
-
-    if (this.propertiesForm.valid) {
-      console.log('Formulario válido. Datos enviados:', this.propertiesForm.value);
-    } else {
-      console.log('Formulario inválido. Revise los campos marcados en rojo.');
-    }
   }
 
 }

@@ -30,11 +30,21 @@ export class FormatsComponent {
     });
   }
 
-  downloadFormat(){
-    this.conService.downloadFormat(this.formatSelect).subscribe({
-      next: (response) => {
-      },
-    });
+  downloadFormat() {
+    this.conService.downloadFormat(this.formatSelect)
+      .subscribe((response) => {
+        const blob = new Blob([response], { type: 'application/pdf' });
+        const urlArchivo = window.URL.createObjectURL(blob);
+        const enlaceTemporal = document.createElement('a');
+        enlaceTemporal.href = urlArchivo;
+        enlaceTemporal.download = this.formatSelect; // Puedes establecer un nombre de archivo adecuado
+        document.body.appendChild(enlaceTemporal);
+        enlaceTemporal.click();
+        document.body.removeChild(enlaceTemporal);
+      }, (error) => {
+        // Manejar errores de descarga
+        console.error('Error al descargar el archivo:', error);
+      });
   }
 
 }

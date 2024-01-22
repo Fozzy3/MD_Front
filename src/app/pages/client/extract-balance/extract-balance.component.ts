@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ConnectionService } from '@core/services/connection.service';
 import { UtilsService } from '@core/services/utils.service';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-extract-balance',
@@ -67,7 +68,8 @@ export class ExtractBalanceComponent {
   constructor(
     private conService: ConnectionService,
     private fb: FormBuilder,
-    private utils: UtilsService
+    private utils: UtilsService,
+    private messageService: MessageService
   ) {}
 
   ngOnInit() {
@@ -98,13 +100,22 @@ export class ExtractBalanceComponent {
     }
     query.subscribe({
       next: (response) => {
-        this.originalDta = response['data'];
-        this.data = response['data']['extracts'];
-        this.tabs = Object.keys(response['data']['extracts']);
-        this.tabs.forEach((element) => {
-          this.headers[element] = this.getHeadersForType(element);
-        });
-        this.goTables = true;
+        if(response.success == true){
+
+          this.originalDta = response['data'];
+          this.data = response['data']['extracts'];
+          this.tabs = Object.keys(response['data']['extracts']);
+          this.tabs.forEach((element) => {
+            this.headers[element] = this.getHeadersForType(element);
+          });
+          this.goTables = true;
+        }else{
+          this.messageService.add({
+            severity: 'error',
+            summary: 'No existen extractos',
+            detail: ''
+          });
+        }
       },
     });
   }

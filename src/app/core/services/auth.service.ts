@@ -60,11 +60,7 @@ export class AuthService {
     if (userToken && userToken['data'] && userToken['data'].rol) {
       this.router.navigateByUrl(`/${userToken['data'].rol}`);
     } else {
-      this.messageService.add({
-        severity: 'error',
-        summary: 'Licencia no valida',
-        detail: 'Comunicarse con administrador'
-      });    }
+    }
   }
 
 

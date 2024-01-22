@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ConnectionService } from '@core/services/connection.service';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-extracts',
@@ -9,7 +10,9 @@ import { ConnectionService } from '@core/services/connection.service';
 export class ExtractsComponent {
   step: any = 0;
 
-  constructor(private conService: ConnectionService) {}
+  constructor(private conService: ConnectionService,
+    private messageService: MessageService
+    ) {}
   ngOnInit() {}
   nextStep() {
     this.step++;
@@ -37,25 +40,34 @@ export class ExtractsComponent {
   chooseExtract(extract) {
     this.conService.getOtherExtract(extract).subscribe({
       next: (response) => {
-        this.originalDta = response['data'];
-        this.data = response['data']['extracts']['extracto'];
-        this.tabs = Object.keys(response['data']['extracts']['extracto']);
-        switch (extract) {
-          case 'settlement':
-            this.title = 'Extracto de Liquidación';
-            break;
-          case 'quotas':
-            this.title = 'Extracto de Cupo';
-            break;
-          case 'payment':
-            this.title = 'Extracto de Pagos';
-            break;
-          default:
-            break;
+        if(response['success'] == true){
+          this.originalDta = response['data'];
+          this.data = response['data']['extracts']['extracto'];
+          this.tabs = Object.keys(response['data']['extracts']['extracto']);
+          switch (extract) {
+            case 'settlement':
+              this.title = 'Extracto de Liquidación';
+              break;
+            case 'quotas':
+              this.title = 'Extracto de Cupo';
+              break;
+            case 'payment':
+              this.title = 'Extracto de Pagos';
+              break;
+            default:
+              break;
+          }
+          this.nextStep();
+        }else if(response['success'] == false){
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Error',
+            detail: 'No existen extractos'
+          });
         }
-      },
+        }
+
     });
-    this.nextStep();
   }
 
   private getHeadersForType(type: any) {

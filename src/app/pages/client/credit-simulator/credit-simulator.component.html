@@ -3,17 +3,17 @@
 
   <div *ngIf="this.step == 0" class="w-100 card">
 
-    <div class="d-flex justify-content-center aling-start col-12 mt-4">
-      <label for="loanAmount" class="text-center col-6 form-label align-self-center">Amortización:</label>
-      <div class="w-100">
-        <p-dropdown class="w-100" [(ngModel)]="repayment" [options]="repaymentOptions" optionLabel="name"
+    <div class="row d-flex justify-content-start aling-start col-12 mt-4">
+      <label for="loanAmount" class="text-center col-12 col-md-6 form-label align-self-center">Amortización:</label>
+      <div class="col-12 col-md-6">
+        <p-dropdown class="" [(ngModel)]="repayment" [options]="repaymentOptions" optionLabel="name"
           [showClear]="true" placeholder="..."></p-dropdown>
       </div>
     </div>
 
-    <div class="d-flex justify-content-center aling-start col-12 mt-4">
-      <label for="numberOfInstallments" class="text-center col-6 form-label align-self-center">Tipo Tasa:</label>
-      <div class="w-100">
+    <div class="row d-flex justify-content-start aling-start col-12 mt-4">
+      <label for="numberOfInstallments" class="text-center col-12 col-md-6 form-label align-self-center">Tipo Tasa:</label>
+      <div class="col-12 col-md-6">
         <p-dropdown class="w-100" [(ngModel)]="rate" [options]="rateOptions" optionLabel="name" [showClear]="true"
           placeholder="..."></p-dropdown>
 
@@ -27,64 +27,55 @@
   <div *ngIf="this.step == 1" class="w-100 card">
     <form [formGroup]="loanForm" class="row g-3">
 
-      <div class="d-flex justify-content-center aling-start col-6 mt-4">
-        <label for="loanAmount" class="text-start col-6 form-label align-self-center">Monto del Préstamo:</label>
-        <div class="w-100">
-          <p-inputNumber [inputStyleClass]="'numberprime'" [minFractionDigits]="0" [maxFractionDigits]="0"
-            formControlName="loanAmount" inputId="currency-us" mode="currency" currency="USD" locale="en-US"
-            placeholder="1000000" autocomplete="off"></p-inputNumber>
+      <div class="row mt-4">
+        <div class="col-12 col-md-6 d-flex justify-content-start align-items-start  flex-column">
+          <label for="loanAmount" class="align-self-start">Monto del Préstamo:</label>
+          <input type="number" class="form-control numberprime" id="currency-us" placeholder="1000000"
+            autocomplete="off" formControlName="loanAmount">
           <small id="loanAmount-help">Ingrese un monto válido*.</small>
         </div>
-      </div>
 
-      <div class="d-flex justify-content-center aling-start col-6 mt-4">
-        <label for="numberOfInstallments" class="text-start col-6 form-label align-self-center">Número de
-          Cuotas:</label>
-        <div class="w-100">
-          <p-inputNumber [inputStyleClass]="'numberprime'" formControlName="numberOfInstallments" placeholder="3"
-            mode="decimal" inputId="withoutgrouping" [useGrouping]="false" autocomplete="off"> </p-inputNumber>
+        <div class="col-12 col-md-6 d-flex justify-content-start align-items-start  flex-column">
+          <label for="numberOfInstallments" class="align-self-start">Número de Cuotas:</label>
+          <input type="number" class="form-control numberprime" id="withoutgrouping" placeholder="3" autocomplete="off"
+            formControlName="numberOfInstallments">
           <small id="numberOfInstallments-help">Ingrese un número válido*.</small>
         </div>
+
+
+        <div class="col-12 col-md-6 d-flex justify-content-start align-items-start  flex-column">
+        <label for="installmentType" class="align-self-start">Frecuencia:</label>
+        <p-dropdown class="w-100" formControlName="installmentType" [options]="conService.params.value.typeQuotas"
+          [filter]="true" filterBy="label" optionLabel="label" optionValue="textCode" [showClear]="true"
+          placeholder="Seleccionar" autocomplete="off"></p-dropdown>
       </div>
 
-      <div class="d-flex justify-content-center aling-start col-6 mt-4">
-        <label for="installmentType" class="text-start col-6 form-label align-self-center">Tipo de Cuota:</label>
-        <div class="w-100">
-          <p-dropdown class="w-100" formControlName="installmentType" [options]="conService.params.value.typeQuotas"
-            [filter]="true" filterBy="label" optionLabel="label" optionValue="textCode" [showClear]="true"
-            placeholder="Seleccionar" autocomplete="off"></p-dropdown>
-        </div>
+      <div class="col-12 col-md-6 d-flex justify-content-start align-items-start  flex-column">
+        <label for="disbursementDate" class="align-self-start">Fecha de desembolso:</label>
+        <p-calendar dateFormat="yy-mm-dd" [minDate]="todayDate" id="disbursementDate" formControlName="disbursementDate"
+        class=" w-100" placeholder="2024-01-15" autocomplete="off"></p-calendar>
       </div>
 
-      <div class="d-flex justify-content-center aling-start col-6 mt-4">
-        <label for="disbursementDate" class="text-start col-6 form-label align-self-center">Fecha de desembolso:</label>
-        <div class="w-100">
-          <p-calendar dateFormat="yy-mm-dd"  [minDate]="todayDate" id="disbursementDate" formControlName="disbursementDate" class=" w-100"
-            placeholder="2024-01-15" autocomplete="off"></p-calendar>
-        </div>
+
+      <div class="col-12 col-md-6 d-flex justify-content-start align-items-start  flex-column">
+        <label for="paymentDate" class="align-self-start">Fecha de pago:</label>
+        <p-calendar dateFormat="yy-mm-dd" (onSelect)="onDateSelect($event)" id="paymentDate"
+        formControlName="disbursementDate" class=" w-100" placeholder="2024-01-15" autocomplete="off"></p-calendar>
       </div>
 
-      <div class="d-flex justify-content-center aling-start col-6 mt-4">
-        <label for="paymentDate" class="text-start col-6 form-label align-self-center">Fecha de pago:</label>
-        <div class="w-100">
-          <p-calendar dateFormat="yy-mm-dd" (onSelect)="onDateSelect($event)" id="paymentDate"
-            formControlName="disbursementDate" class=" w-100" placeholder="2024-01-15" autocomplete="off"></p-calendar>
-        </div>
-      </div>
-
-      <div class="d-flex justify-content-center aling-start col-6 mt-4">
-        <label for="interestRate" class="text-start col-6 form-label align-self-center">Tasa de interés:</label>
-        <div class="w-100">
-          <p-inputNumber [inputStyleClass]="'numberprime'" formControlName="interestRate" inputId="minmaxfraction"
-            mode="decimal" [minFractionDigits]="1" [maxFractionDigits]="8" placeholder="0.025" autocomplete="off">
-          </p-inputNumber>
-          <small id="interestRate">Ingrese un tasa válida*.</small>
-        </div>
+      <div class="col-12 col-md-6 d-flex justify-content-start align-items-start  flex-column">
+        <label for="interestRate" class="align-self-start">Tasa de interés:</label>
+        <p-inputNumber [inputStyleClass]="'numberprime'" formControlName="interestRate" inputId="minmaxfraction"
+        mode="decimal" [max]="1" [minFractionDigits]="1" [maxFractionDigits]="8" placeholder="0.025"
+        autocomplete="off">
+      </p-inputNumber>
+      <small id="interestRate">Ingrese un tasa válida*.</small>
+    </div>
       </div>
 
       <!-- <div class="d-flex justify-content-center aling-start col-6 mt-4">
-        <label for="otherRate" class="text-start col-6 form-label align-self-center">Otra tasa:</label>
-        <div class="w-100">
+        <label for="otherRate" class="align-self-center">Otra tasa:</label>
+                <div class="col-12 col-md-6 d-flex justify-content-center align-items-center  flex-column">
           <p-inputNumber [inputStyleClass]="'numberprime'" formControlName="otherRate" inputId="minmaxfraction"
             mode="decimal" [minFractionDigits]="1" [maxFractionDigits]="8" placeholder="0.025"
             autocomplete="off"></p-inputNumber>
@@ -96,6 +87,14 @@
 </div>
 
 <div *ngIf="this.step == 2" id="TARGET" class=" d-flex justify-content-center  align-items-center flex-column p-2">
+
+  <div id="TARGET" class="d-flex justify-content-center  align-items-center flex-column m-1">
+    <div class="card my-2 w-100">
+      <h3>Empresa: {{utils.getName()}}</h3>
+      <h3>Fecha: {{todayDate}}</h3>
+      <h3>Nombre: {{auth.getUserFromLocalStorage().name}}</h3>
+    </div>
+  </div>
   <app-table [title]="'Simulador'" [data]="simulatorData" [headers]="simulatorHeader"></app-table>
 </div>
 

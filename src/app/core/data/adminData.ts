@@ -5,7 +5,7 @@ export const itemsAdmin = [
     url: 'propiedades'
   },
   {
-    title: 'Cambiar contraseña',
+    title: 'Cambiar contraseña administrador',
     icon: './assets/icons/admin/cambiarContraseña.svg',
     url: 'cambio-contrasena'
   },

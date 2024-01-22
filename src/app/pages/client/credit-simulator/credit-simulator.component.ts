@@ -4,6 +4,8 @@ import { ConnectionService } from '@core/services/connection.service';
 import { DatePipe } from '@angular/common';
 import { MessageService } from 'primeng/api';
 import { ChangeDetectionStrategy } from '@angular/core';
+import { UtilsService } from '@core/services/utils.service';
+import { AuthService } from '@core/services/auth.service';
 
 @Component({
   selector: 'app-credit-simulator',
@@ -24,7 +26,9 @@ export class CreditSimulatorComponent {
     private fb: FormBuilder,
     protected conService: ConnectionService,
     private datePipe: DatePipe,
-    private messageService: MessageService
+    private messageService: MessageService,
+    protected utils: UtilsService,
+    public auth: AuthService
   ) {}
 
   ngOnInit(): void {

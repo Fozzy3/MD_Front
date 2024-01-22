@@ -14,7 +14,6 @@ input{
   background: white;
   color: var(--greyTableDark);
   outline: none;
-
   &:focus ~ label,
   &:valid ~ label {
     top: 0;
@@ -30,6 +29,9 @@ input{
 }
 
 
+
+
+
 .card{
   width: 85%;
   height: 100%;
@@ -43,6 +45,14 @@ input{
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+@media screen and (max-width: 450px) {
+
+  input{
+    width: 250px;
+  }
+
 }
 
 

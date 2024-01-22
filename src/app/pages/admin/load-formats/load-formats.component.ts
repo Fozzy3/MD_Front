@@ -128,7 +128,7 @@ export class LoadFormatComponent {
         const urlArchivo = window.URL.createObjectURL(blob);
         const enlaceTemporal = document.createElement('a');
         enlaceTemporal.href = urlArchivo;
-        enlaceTemporal.download = "nombreArchivo.pdf"; // Puedes establecer un nombre de archivo adecuado
+        enlaceTemporal.download = this.formatSelect;
         document.body.appendChild(enlaceTemporal);
         enlaceTemporal.click();
         document.body.removeChild(enlaceTemporal);

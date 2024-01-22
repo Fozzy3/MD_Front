@@ -11,14 +11,14 @@ export const itemsAdmin = [
     title: 'Simulador de Créditos',
     icon: './assets/icons/client/simulatorCredits.svg',
     url: 'simulador-credito',
-    subTitle: 'Texto descriptivo del simulador de créditos.',
+    subTitle: 'Descubre tu futuro financiero con nuestro simulador de crédito: ingresa monto, plazo y tasa para ver pagos mensuales y totales. Decide con información clara y encuentra la mejor opción para tus necesidades.',
   },
   {
     key: "exs",
     title: 'Extracto de Saldos',
     icon: './assets/icons/client/extractBalance.svg',
     url: 'extracto-saldos',
-    subTitle: 'Texto descriptivo del extracto de saldos.',
+    subTitle: 'Sumérgete en la claridad financiera con nuestro extracto de saldos. Este resumen conciso te ofrece una visión detallada de tus transacciones, saldos y movimientos, proporcionándote una comprensión instantánea de tu situación financiera.',
   },
   {
     key: "aux",

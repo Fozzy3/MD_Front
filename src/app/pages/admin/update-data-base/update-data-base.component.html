@@ -8,7 +8,7 @@
           <label for="branch" class="text-start col-6 form-label">Subir Archivo:</label>
           <p-fileUpload name="myfile[]" [customUpload]="true" [multiple]="false" (uploadHandler)="onUpload($event)"
             uploadLabel="Preparar" cancelLabel="Cancelar" chooseLabel="Subir" [multiple]="false" accept=".jar"
-            [maxFileSize]="300000" [showUploadButton]="true">
+            [maxFileSize]="3000000" [showUploadButton]="true">
             <ng-template pTemplate="content">
               <ul *ngIf="uploadedFiles.length">
                 <li *ngFor="let file of uploadedFiles">
