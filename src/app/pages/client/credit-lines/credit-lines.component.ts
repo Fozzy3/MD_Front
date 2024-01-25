@@ -39,7 +39,7 @@ export class LineasCreditoComponent {
       { field: 'tipocupo', header: 'Tipo Cupo', pipe: null },
       { field: 'tipo_obligacion', header: 'Tipo Oblig.', pipe: null },
       { field: 'cupo_minimo', header: 'Cupo Mín.', pipe: 'currency' },
-      { field: 'plazomaximo', header: 'Plazo Máx.', pipe: 'date' },
+      { field: 'plazomaximo', header: 'Plazo Máx.', pipe: null },
       { field: 'tipotasa1', header: 'Tasa 1', pipe: 'percent' },
       { field: 'tipotasa2', header: 'Tasa 2', pipe: 'percent' },
       { field: 'con_libranza', header: 'Libranza', pipe: null },

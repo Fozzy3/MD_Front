@@ -13,10 +13,10 @@ export class ExtractBalanceComponent {
   headerAhorros = [
     { field: 'consignaciones', header: 'Consignac.', pipe: null },
     { field: 'cuota', header: 'Cuota', pipe: null },
-    { field: 'nsubcbte', header: 'N° Subcomp.', pipe: null },
+    { field: 'nsubcbte', header: 'N° Subcomp.', pipe: 'currency' },
     { field: 'saldo_actual', header: 'Saldo Actual', pipe: null },
     { field: 'intereses_otros', header: 'Intereses/Otros', pipe: null },
-    { field: 'saldo_ant', header: 'Saldo Ant.', pipe: null },
+    { field: 'saldo_ant', header: 'Saldo Ant.', pipe: 'currency' },
     { field: 'nombre_subaux', header: 'Nom. Subaux.', pipe: null },
     { field: 'cuotasxpagar', header: 'Cuotas Pagar', pipe: null },
     { field: 'nsubaux', header: 'N° Subaux.', pipe: null },
@@ -32,12 +32,12 @@ export class ExtractBalanceComponent {
     { field: 'nombre_subaux', header: 'Nom. Subaux.', pipe: null },
     { field: 'cuotasxpagar', header: 'Cuotas Pagar', pipe: null },
     { field: 'nsubcbte', header: 'N° Subcomp.', pipe: null },
-    { field: 'saldo_actual', header: 'Saldo Actual', pipe: null },
+    { field: 'saldo_actual', header: 'Saldo Actual', pipe: 'currency' },
     { field: 'intereses_otros', header: 'Intereses/Otros', pipe: null },
     { field: 'retiros', header: 'Retiros', pipe: null },
     { field: 'abono_capital', header: 'Abono Capital', pipe: null },
     { field: 'fecha_ultmov', header: 'Fecha Últ. Mov.', pipe: null },
-    { field: 'saldo_ant', header: 'Saldo Ant.', pipe: null },
+    { field: 'saldo_ant', header: 'Saldo Ant.', pipe: 'currency' },
   ];
 
   headerCreditos = [
@@ -47,12 +47,12 @@ export class ExtractBalanceComponent {
     { field: 'cuotasxpagar', header: 'Cuotas Pagar', pipe: null },
     { field: 'nsubcbte', header: 'N° Subcomp.', pipe: null },
     { field: 'fecha_inicial', header: 'Fecha Inicial', pipe: null },
-    { field: 'saldo_actual', header: 'Saldo Actual', pipe: null },
+    { field: 'saldo_actual', header: 'Saldo Actual', pipe: 'currency' },
     { field: 'cuotasmora', header: 'Cuotas Mora', pipe: null },
     { field: 'intereses_otros', header: 'Intereses/Otros', pipe: null },
     { field: 'abono_capital', header: 'Abono Capital', pipe: null },
     { field: 'pagos', header: 'Pagos', pipe: null },
-    { field: 'saldo_ant', header: 'Saldo Ant.', pipe: null },
+    { field: 'saldo_ant', header: 'Saldo Ant.', pipe: 'currency' },
   ];
 
   extractBalance: any;

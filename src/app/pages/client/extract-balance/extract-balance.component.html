@@ -44,7 +44,7 @@
         </div>
 
         <div *ngFor="let tab of tabs; let i = index" class="m-3">
-          <app-table [title]="tab" [data]="data[tab]" [headers]="headers[tab]"></app-table>
+          <app-table [title]="tab" [total]="true" [data]="data[tab]" [headers]="headers[tab]"></app-table>
         </div>
 
       <div class="d-flex justify-content-center align-items-center flex-md-row flex-column my-3">

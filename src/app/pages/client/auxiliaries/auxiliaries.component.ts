@@ -15,12 +15,12 @@ export class AuxiliariesComponent {
     { field: 'ncbte', header: 'N° Cbte', pipe: null },
     { field: 'tipocbte', header: 'Tipo Cbte', pipe: null },
     { field: 'nmovimiento', header: 'N° Movimiento', pipe: null },
-    { field: 'saldonuevo', header: 'Saldo Nuevo', pipe: null },
+    { field: 'saldonuevo', header: 'Saldo Nuevo', pipe: 'currency' },
     { field: 'nombre_subaux', header: 'Nom. Subaux.', pipe: null },
     { field: 'movdebitos', header: 'Mov. Débitos', pipe: null },
     { field: 'observaciones', header: 'Observaciones', pipe: null },
     { field: 'nsubcbte', header: 'N° Subcbte', pipe: null },
-    { field: 'saldoant', header: 'Saldo Ant.', pipe: null },
+    { field: 'saldoant', header: 'Saldo Ant.', pipe: 'currency' },
     { field: 'nsubaux', header: 'N° Subaux.', pipe: null },
     { field: 'movcreditos', header: 'Mov. Créditos', pipe: null }
 ];
@@ -30,12 +30,12 @@ export class AuxiliariesComponent {
     { field: 'ncbte', header: 'N° Cbte', pipe: null },
     { field: 'tipocbte', header: 'Tipo Cbte', pipe: null },
     { field: 'nmovimiento', header: 'N° Movimiento', pipe: null },
-    { field: 'saldonuevo', header: 'Saldo Nuevo', pipe: null },
+    { field: 'saldonuevo', header: 'Saldo Nuevo', pipe: 'currency' },
     { field: 'nombre_subaux', header: 'Nom. Subaux.', pipe: null },
     { field: 'movdebitos', header: 'Mov. Débitos', pipe: null },
     { field: 'observaciones', header: 'Observaciones', pipe: null },
     { field: 'nsubcbte', header: 'N° Subcbte', pipe: null },
-    { field: 'saldoant', header: 'Saldo Ant.', pipe: null },
+    { field: 'saldoant', header: 'Saldo Ant.', pipe: 'currency' },
     { field: 'nsubaux', header: 'N° Subaux.', pipe: null },
     { field: 'movcreditos', header: 'Mov. Créditos', pipe: null }
 ];
@@ -45,12 +45,12 @@ export class AuxiliariesComponent {
     { field: 'ncbte', header: 'N° Cbte', pipe: null },
     { field: 'tipocbte', header: 'Tipo Cbte', pipe: null },
     { field: 'nmovimiento', header: 'N° Movimiento', pipe: null },
-    { field: 'saldonuevo', header: 'Saldo Nuevo', pipe: null },
+    { field: 'saldonuevo', header: 'Saldo Nuevo', pipe: 'currency' },
     { field: 'nombre_subaux', header: 'Nom. Subaux.', pipe: null },
     { field: 'movdebitos', header: 'Mov. Débitos', pipe: null },
     { field: 'observaciones', header: 'Observaciones', pipe: null },
     { field: 'nsubcbte', header: 'N° Subcbte', pipe: null },
-    { field: 'saldoant', header: 'Saldo Ant.', pipe: null },
+    { field: 'saldoant', header: 'Saldo Ant.', pipe: 'currency' },
     { field: 'nsubaux', header: 'N° Subaux.', pipe: null },
     { field: 'movcreditos', header: 'Mov. Créditos', pipe: null }
 ];

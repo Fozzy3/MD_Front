@@ -37,13 +37,13 @@
   </tr>
 </ng-template>
 <ng-template pTemplate="body" let-rowData let-columns="columns" let-index="rowIndex">
-  <tr [pReorderableRow]="index">
+  <tr [pReorderableRow]="index" [ngClass]="{'last-row': total && (index == data.length - 1)}">
     <td *ngFor="let col of columns">
-      <ng-container *ngIf="col.pipe === 'date'; else otherPipe">
+      <ng-container *ngIf="col.pipe == 'date'; else otherPipe">
         {{ rowData[col.field] | date }}
       </ng-container>
       <ng-template #otherPipe>
-        <ng-container *ngIf="col.pipe === 'currency'; else noPipe">
+        <ng-container *ngIf="col.pipe == 'currency'; else noPipe">
           {{ rowData[col.field] | currency }}
         </ng-container>
       </ng-template>
@@ -52,5 +52,7 @@
       </ng-template>
     </td>
   </tr>
+
+
 </ng-template>
 </p-table>

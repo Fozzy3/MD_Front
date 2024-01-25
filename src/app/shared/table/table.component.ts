@@ -10,6 +10,7 @@ import * as FileSaver from 'file-saver';
 export class TableComponent {
   @Input() data: any = null;
   @Input() title: any = null;
+  @Input() total: boolean = false;
   @Input() headers: any = null;
 
   selectedColumns: any;

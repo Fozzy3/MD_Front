@@ -23,18 +23,18 @@ export class ExtractsComponent {
   tabs: any;
   title: string;
   headers = [
-    { field: 'mora', header: 'Mora', pipe: null },
-    { field: 'capital', header: 'Capital', pipe: null },
+    { field: 'mora', header: 'Mora', pipe: 'currency' },
+    { field: 'capital', header: 'Capital', pipe: 'currency' },
     { field: 'fecha_ult_liq', header: 'Fecha Ult. Liq.', pipe: null },
     { field: 'fechaproxabono', header: 'Fecha Próx. Abono', pipe: null },
     { field: 'otros', header: 'Otros', pipe: null },
     { field: 'nombre_subaux', header: 'Nombre Subaux.', pipe: null },
     { field: 'nsubcbte', header: 'Nsubcbte', pipe: null },
-    { field: 'saldo_actual', header: 'Saldo Actual', pipe: null },
+    { field: 'saldo_actual', header: 'Saldo Actual', pipe: 'currency' },
     { field: 'ncuotasxpagar', header: 'Ncuotasxpagar', pipe: null },
     { field: 'ncuotasmora', header: 'Ncuotasmora', pipe: null },
     { field: 'intereses', header: 'Intereses', pipe: null },
-    { field: 'pago', header: 'Pago', pipe: null },
+    { field: 'pago', header: 'Pago', pipe: 'currency' },
   ];
 
   chooseExtract(extract) {
