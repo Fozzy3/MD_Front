@@ -11,48 +11,45 @@ import { MessageService } from 'primeng/api';
 })
 export class AuxiliariesComponent {
   headerAhorros = [
-    { field: 'fecha', header: 'Fecha', pipe: null },
-    { field: 'ncbte', header: 'N° Cbte', pipe: null },
-    { field: 'tipocbte', header: 'Tipo Cbte', pipe: null },
-    { field: 'nmovimiento', header: 'N° Movimiento', pipe: null },
-    { field: 'saldonuevo', header: 'Saldo Nuevo', pipe: 'currency' },
     { field: 'nombre_subaux', header: 'Nom. Subaux.', pipe: null },
-    { field: 'movdebitos', header: 'Mov. Débitos', pipe: null },
-    { field: 'observaciones', header: 'Observaciones', pipe: null },
     { field: 'nsubcbte', header: 'N° Subcbte', pipe: null },
+    { field: 'nmovimiento', header: 'N° Movimiento', pipe: null },
+    { field: 'fecha', header: 'Fecha', pipe: null },
+    { field: 'tipocbte', header: 'Tipo Cbte', pipe: null },
+    { field: 'ncbte', header: 'N° Cbte', pipe: null },
     { field: 'saldoant', header: 'Saldo Ant.', pipe: 'currency' },
-    { field: 'nsubaux', header: 'N° Subaux.', pipe: null },
-    { field: 'movcreditos', header: 'Mov. Créditos', pipe: null }
+    { field: 'movdebitos', header: 'Mov. Débitos', pipe: null },
+    { field: 'movcreditos', header: 'Mov. Créditos', pipe: null },
+    { field: 'saldonuevo', header: 'Saldo Nuevo', pipe: 'currency' },
+    { field: 'observaciones', header: 'Observaciones', pipe: null },
 ];
 
-  headersAportes = [
-    { field: 'fecha', header: 'Fecha', pipe: null },
-    { field: 'ncbte', header: 'N° Cbte', pipe: null },
-    { field: 'tipocbte', header: 'Tipo Cbte', pipe: null },
-    { field: 'nmovimiento', header: 'N° Movimiento', pipe: null },
-    { field: 'saldonuevo', header: 'Saldo Nuevo', pipe: 'currency' },
+headersAportes = [
     { field: 'nombre_subaux', header: 'Nom. Subaux.', pipe: null },
-    { field: 'movdebitos', header: 'Mov. Débitos', pipe: null },
-    { field: 'observaciones', header: 'Observaciones', pipe: null },
-    { field: 'nsubcbte', header: 'N° Subcbte', pipe: null },
+    { field: 'nsubcomp', header: 'N° Subcomp.', pipe: null },
+    { field: 'nmovimiento', header: 'N° Movimiento', pipe: null },
+    { field: 'fecha', header: 'Fecha', pipe: null },
+    { field: 'tipocbte', header: 'Tipo Cbte', pipe: null },
+    { field: 'ncbte', header: 'N° Cbte', pipe: null },
     { field: 'saldoant', header: 'Saldo Ant.', pipe: 'currency' },
-    { field: 'nsubaux', header: 'N° Subaux.', pipe: null },
-    { field: 'movcreditos', header: 'Mov. Créditos', pipe: null }
+    { field: 'movdebitos', header: 'Mov. Débitos', pipe: null },
+    { field: 'movcreditos', header: 'Mov. Créditos', pipe: null },
+    { field: 'saldonuevo', header: 'Saldo Nuevo', pipe: 'currency' },
+    { field: 'observaciones', header: 'Observaciones', pipe: null },
 ];
 
-  headerCreditos = [
-    { field: 'fecha', header: 'Fecha', pipe: null },
-    { field: 'ncbte', header: 'N° Cbte', pipe: null },
-    { field: 'tipocbte', header: 'Tipo Cbte', pipe: null },
-    { field: 'nmovimiento', header: 'N° Movimiento', pipe: null },
-    { field: 'saldonuevo', header: 'Saldo Nuevo', pipe: 'currency' },
+headerCreditos = [
     { field: 'nombre_subaux', header: 'Nom. Subaux.', pipe: null },
-    { field: 'movdebitos', header: 'Mov. Débitos', pipe: null },
-    { field: 'observaciones', header: 'Observaciones', pipe: null },
-    { field: 'nsubcbte', header: 'N° Subcbte', pipe: null },
+    { field: 'nsubcomp', header: 'N° Subcomp.', pipe: null },
+    { field: 'nmovimiento', header: 'N° Movimiento', pipe: null },
+    { field: 'fecha', header: 'Fecha', pipe: null },
+    { field: 'tipocbte', header: 'Tipo Cbte', pipe: null },
+    { field: 'ncbte', header: 'N° Cbte', pipe: null },
     { field: 'saldoant', header: 'Saldo Ant.', pipe: 'currency' },
-    { field: 'nsubaux', header: 'N° Subaux.', pipe: null },
-    { field: 'movcreditos', header: 'Mov. Créditos', pipe: null }
+    { field: 'movdebitos', header: 'Mov. Débitos', pipe: null },
+    { field: 'movcreditos', header: 'Mov. Créditos', pipe: null },
+    { field: 'saldonuevo', header: 'Saldo Nuevo', pipe: 'currency' },
+    { field: 'observaciones', header: 'Observaciones', pipe: null },
 ];
 
   extractBalance: any;

@@ -27,7 +27,7 @@
           <img class="mt-2" style="width: 40px;" src="./assets/icons/client/statement/paymentStatement.svg" alt="">
         </button>
       </div>
-      <div class="d-flex justify-content-center align-items-center flex-sm-row flex-column">
+      <div id="TARGETNOT" class="d-flex justify-content-center align-items-center flex-sm-row flex-column">
         <button class="btn  m-2 out mx-5" routerLink="/client"  role="button" >
           Volver
         </button>
@@ -35,15 +35,16 @@
   </div>
   <div class="row" *ngIf="[1].includes(step)" >
     <div class="card my-2 w-100">
-      <h3>{{originalDta['headerData']['empresa']}}</h3>
       <h3>{{originalDta['headerDate']['fecha']}} - {{originalDta['headerDate']['hora']}}</h3>
       <h3>NIT: {{originalDta['headerData']['nitBusiness']}}</h3>
       <h3>Nombre: {{originalDta['headerData']['nombrecliente']}}</h3>
       <h3>Empresa: {{originalDta['headerData']['nominaempresa']}} Ciudad: {{originalDta['headerData']['ciudad']}}
       </h3>
     </div>
-      <app-table [title]="title" [data]="data" [headers]="headers"></app-table>
-    <div class="d-flex justify-content-center align-items-center flex-sm-row flex-column">
+    <div id="TARGET" class=" d-flex justify-content-center  align-items-center flex-column p-2">
+      <app-table [total]="true" [title]="title" [data]="data" [headers]="headers"></app-table>
+    </div>
+    <div id="TARGETNOT" class="d-flex justify-content-center align-items-center flex-sm-row flex-column">
       <button class="btn  m-2 out mx-5" routerLink="/client"  role="button" >
         Volver
       </button>

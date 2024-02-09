@@ -11,49 +11,44 @@ import { MessageService } from 'primeng/api';
 })
 export class ExtractBalanceComponent {
   headerAhorros = [
-    { field: 'consignaciones', header: 'Consignac.', pipe: null },
-    { field: 'cuota', header: 'Cuota', pipe: null },
+    { field: 'nombre_subaux', header: 'Nom. Subaux.', pipe: null },
     { field: 'nsubcbte', header: 'N° Subcomp.', pipe: 'currency' },
-    { field: 'saldo_actual', header: 'Saldo Actual', pipe: null },
-    { field: 'intereses_otros', header: 'Intereses/Otros', pipe: null },
     { field: 'saldo_ant', header: 'Saldo Ant.', pipe: 'currency' },
-    { field: 'nombre_subaux', header: 'Nom. Subaux.', pipe: null },
-    { field: 'cuotasxpagar', header: 'Cuotas Pagar', pipe: null },
-    { field: 'nsubaux', header: 'N° Subaux.', pipe: null },
-    { field: 'retiros', header: 'Retiros', pipe: null },
-    { field: 'abono_capital', header: 'Abono Capital', pipe: null },
-    { field: 'fecha_ultmov', header: 'Fecha Últ. Mov.', pipe: null },
-    { field: 'rendimientos_ahorros', header: 'Rend. Ahorros', pipe: null },
-  ];
-
-  headersAportes = [
     { field: 'consignaciones', header: 'Consignac.', pipe: null },
-    { field: 'cuota', header: 'Cuota', pipe: null },
-    { field: 'nombre_subaux', header: 'Nom. Subaux.', pipe: null },
-    { field: 'cuotasxpagar', header: 'Cuotas Pagar', pipe: null },
-    { field: 'nsubcbte', header: 'N° Subcomp.', pipe: null },
-    { field: 'saldo_actual', header: 'Saldo Actual', pipe: 'currency' },
-    { field: 'intereses_otros', header: 'Intereses/Otros', pipe: null },
     { field: 'retiros', header: 'Retiros', pipe: null },
-    { field: 'abono_capital', header: 'Abono Capital', pipe: null },
     { field: 'fecha_ultmov', header: 'Fecha Últ. Mov.', pipe: null },
-    { field: 'saldo_ant', header: 'Saldo Ant.', pipe: 'currency' },
-  ];
-
-  headerCreditos = [
+    { field: 'saldo_actual', header: 'Saldo Actual', pipe: null },
     { field: 'cuota', header: 'Cuota', pipe: null },
+    { field: 'rendimientos_ahorros', header: 'Rend. Ahorros', pipe: null },
+];
+
+headersAportes = [
     { field: 'nombre_subaux', header: 'Nom. Subaux.', pipe: null },
-    { field: 'desembolsos', header: 'Desembolsos', pipe: null },
+    { field: 'nsubcbte', header: 'N° Subcomp.', pipe: null },
+    { field: 'saldo_ant', header: 'Saldo Ant.', pipe: 'currency' },
+    { field: 'consignaciones', header: 'Consignac.', pipe: null },
+    { field: 'retiros', header: 'Retiros', pipe: null },
+    { field: 'fecha_ultmov', header: 'Fecha Últ. Mov.', pipe: null },
+    { field: 'saldo_actual', header: 'Saldo Actual', pipe: 'currency' },
+    { field: 'cuota', header: 'Cuota', pipe: null },
     { field: 'cuotasxpagar', header: 'Cuotas Pagar', pipe: null },
+];
+
+headerCreditos = [
+    { field: 'nombre_subaux', header: 'Nom. Subaux.', pipe: null },
     { field: 'nsubcbte', header: 'N° Subcomp.', pipe: null },
     { field: 'fecha_inicial', header: 'Fecha Inicial', pipe: null },
+    { field: 'saldo_ant', header: 'Saldo Ant.', pipe: 'currency' },
+    { field: 'abono_capital', header: 'Abono Capital', pipe: null },
+    { field: 'desembolsos', header: 'Desembolsos', pipe: null },
     { field: 'saldo_actual', header: 'Saldo Actual', pipe: 'currency' },
+    { field: 'cuota', header: 'Cuota', pipe: null },
+    { field: 'cuotasxpagar', header: 'Cuotas Pagar', pipe: null },
     { field: 'cuotasmora', header: 'Cuotas Mora', pipe: null },
     { field: 'intereses_otros', header: 'Intereses/Otros', pipe: null },
-    { field: 'abono_capital', header: 'Abono Capital', pipe: null },
     { field: 'pagos', header: 'Pagos', pipe: null },
-    { field: 'saldo_ant', header: 'Saldo Ant.', pipe: 'currency' },
-  ];
+];
+
 
   extractBalance: any;
   extractBalanceOptions: any;

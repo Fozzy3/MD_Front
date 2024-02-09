@@ -88,17 +88,17 @@
 
 <div *ngIf="this.step == 2" id="TARGET" class=" d-flex justify-content-center  align-items-center flex-column p-2">
 
-  <div id="TARGET" class="d-flex justify-content-center  align-items-center flex-column m-1">
+  <div class="d-flex justify-content-center  align-items-center flex-column m-1">
     <div class="card my-2 w-100">
       <h3>Empresa: {{utils.getName()}}</h3>
-      <h3>Fecha: {{todayDate}}</h3>
+      <h3>Fecha: {{todayDate | date}}</h3>
       <h3>Nombre: {{auth.getUserFromLocalStorage().name}}</h3>
     </div>
   </div>
   <app-table [title]="'Simulador'" [data]="simulatorData" [headers]="simulatorHeader"></app-table>
 </div>
 
-<div class="d-flex justify-content-center align-items-center flex-sm-row flex-column mt-3">
+<div id="TARGETNOT" class="d-flex justify-content-center align-items-center flex-sm-row flex-column mt-3">
   <button class="btn  m-2 out mx-5" routerLink="/client" role="button">
     Salir
   </button>
